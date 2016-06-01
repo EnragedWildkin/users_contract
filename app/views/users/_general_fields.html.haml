@@ -1,0 +1,27 @@
+.form-group
+  .col-sm-5= f.label :email
+  .col-sm-7= f.email_field :email, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :password
+  .col-sm-7= f.password_field :password, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :password_confirmation
+  .col-sm-7= f.password_field :password_confirmation, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :taxpayer_id, t('fields.en.taxpayer_id') + '/' + t('fields.ua.taxpayer_id')
+  .col-sm-7= f.text_field :taxpayer_id, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :register_number, t('fields.en.register_number')
+  .col-sm-7= f.text_field :register_number, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :register_number_start_date, t('fields.en.register_number_start_date')
+  .col-sm-7= f.date_field :register_number_start_date, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :swift_code, t('fields.en.swift_code')
+  .col-sm-7= f.text_field :swift_code, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :iban_number, t('fields.en.iban_number')
+  .col-sm-7= f.text_field :iban_number, class: 'form-control', required: true
+.form-group
+  .col-sm-5= f.label :bank_code, t('fields.en.bank_code')
+  .col-sm-7= f.text_field :bank_code, class: 'form-control', required: true

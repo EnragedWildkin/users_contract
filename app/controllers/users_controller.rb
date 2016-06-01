@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_en_user_field
+    @user.build_ua_user_field
+    @user.build_ru_user_field
   end
 
   def edit
@@ -53,11 +56,54 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
- 
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :taxpayer_id,
+      :register_number,
+      :register_number_start_date,
+      :swift_code,
+      :iban_number,
+      :bank_code,
+      en_user_field_attributes: [
+        :first_name,
+        :last_name,
+        :middle_name,
+        :contract_price,
+        :location,
+        :address,
+        :c_a_number,
+        :bank_name,
+        :bank_address
+      ],
+      ua_user_field_attributes: [
+        :first_name,
+        :last_name,
+        :middle_name,
+        :contract_price,
+        :location,
+        :address,
+        :c_a_number,
+        :bank_name,
+        :bank_address
+      ],
+      ru_user_field_attributes: [
+        :first_name,
+        :last_name,
+        :middle_name,
+        :contract_price,
+        :location,
+        :address,
+        :c_a_number,
+        :bank_name,
+        :bank_address
+      ]
+    )
+  end
 end
