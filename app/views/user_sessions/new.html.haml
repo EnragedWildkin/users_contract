@@ -1,3 +1,15 @@
 %h1 Login
-= render 'form'
-= link_to 'Back', user_sessions_path
+.panel-body
+  .col-md-6.col-md-offset-3
+    = form_tag user_sessions_path, method: :post do
+      .form-group
+        = label_tag :email
+        = email_field_tag :email, nil, class: 'form-control', required: true
+      .form-group
+        = label_tag :password
+        = password_field_tag :password, nil, class: 'form-control', required: true
+      .row
+        .col-sm-6
+          = link_to 'Back', users_path, class: 'btn btn-primary btn-lg'
+        .col-sm-6
+          = submit_tag 'Log In', class: 'pull-right btn btn-primary btn-lg'

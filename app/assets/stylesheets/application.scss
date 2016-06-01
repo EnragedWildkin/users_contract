@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap/theme";
+
+/* universal */
+html{
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 30px;
+  padding-bottom: 35px;
+}
+
+.title, h1 {
+  font-weight: bold;
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+  text-align: center;
+}
