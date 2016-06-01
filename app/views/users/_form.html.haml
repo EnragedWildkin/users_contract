@@ -1,18 +1,63 @@
 .panel-body
-  .col-md-6.col-md-offset-3
+  .col-md-8.col-md-offset-2
     = form_for @user do |f|
       = render 'shared/errors', object: @user
-      .form-group
-        = f.label :email
-        = f.email_field :email, class: 'form-control', required: true
-      .form-group
-        = f.label :password
-        = f.password_field :password, class: 'form-control', required: true
-      .form-group
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, class: 'form-control', required: true
-      .row
-        .col-sm-6
-          = link_to 'Back', users_path, class: 'btn btn-primary btn-lg'
-        .col-sm-6
-          = f.submit 'Save', class: 'pull-right btn btn-primary btn-lg'
+      .col-md-6
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: 'form-control', required: true
+        .form-group
+          = f.label :password
+          = f.password_field :password, class: 'form-control', required: true
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control', required: true
+        .form-group
+          = f.label :first_name
+          = f.text_field :first_name, class: 'form-control', required: true
+        .form-group
+          = f.label :last_name
+          = f.text_field :last_name, class: 'form-control', required: true
+        .form-group
+          = f.label :middle_name
+          = f.text_field :middle_name, class: 'form-control', required: true
+        .form-group
+          = f.label :contract_price
+          = f.text_field :contract_price, class: 'form-control', placeholder: '$10.00/h', required: true
+        .form-group
+          = f.label :location
+          = f.text_field :location, class: 'form-control', placeholder: 'remotely (Odessa, Ukraine)', required: true
+        .form-group
+          = f.label :address
+          = f.text_field :address, class: 'form-control', placeholder: '88888, Some Str., Lviv, Ukraine', required: true
+      .col-md-6
+        .form-group
+          = f.label :taxpayer_id, 'Taxpayer ID'
+          = f.text_field :taxpayer_id, class: 'form-control', required: true
+        .form-group
+          = f.label :register_number, 'Register №'
+          = f.text_field :register_number, class: 'form-control', required: true
+        .form-group
+          = f.label :register_number_start_date, 'Register № start date'
+          = f.date_field :register_number_start_date, class: 'form-control', required: true
+        .form-group
+          = f.label :c_a_number, 'c/a №'
+          = f.text_field :c_a_number, class: 'form-control', placeholder: '999999999999 in US Dollars', required: true
+        .form-group
+          = f.label :bank_name
+          = f.text_field :bank_name, class: 'form-control', placeholder: 'JSC “PrivatBank”', required: true
+        .form-group
+          = f.label :bank_address
+          = f.text_field :bank_address, class: 'form-control', placeholder: '88888, Some Str., Lviv, Ukraine', required: true
+        .form-group
+          = f.label :swift_code, 'Bank SWIFT Code'
+          = f.text_field :swift_code, class: 'form-control', required: true
+        .form-group
+          = f.label :iban_number, 'IBAN'
+          = f.text_field :iban_number, class: 'form-control', required: true
+      .col-md-12
+        .row
+          .col-sm-6
+            = link_to 'Back', users_path, class: 'btn btn-primary btn-lg'
+          .col-sm-6
+            = f.submit 'Save', class: 'pull-right btn btn-primary btn-lg'
