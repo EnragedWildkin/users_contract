@@ -9,7 +9,7 @@ class CreateUserFields < ActiveRecord::Migration
       t.string  :location
       t.string  :address
 
-      t.integer :c_a_number
+      t.string  :c_a_number
       t.string  :bank_name
       t.string  :bank_address
       t.string  :language

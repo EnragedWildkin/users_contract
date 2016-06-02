@@ -1,3 +1,10 @@
-%p#notice= notice
-
-= link_to 'Edit', edit_user_path(@user)
+%table.table.table-hover
+  %thead
+    %tr
+      %th= t('fields.general.description')
+      %th= t('fields.general.english')
+      %th= t('fields.general.ukraunian')
+      %th= t('fields.general.russian')
+  %tbody
+    = render partial: 'show_general_fields', object: @user
+    = render partial: 'show_different_languages_fields', object: @user

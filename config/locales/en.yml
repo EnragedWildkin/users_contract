@@ -1,27 +1,12 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
   fields:
+    general:
+      description: "Description"
+      english: "English"
+      ukraunian: "Ukrainian"
+      russian: "Russian"
+      hyphen_sign: " --- "
     en:
       title: "Fields on english"
       general_fields: "General fields"
@@ -87,11 +72,10 @@ en:
       bank_name: "Название банка"
       bank_name_placeholder: "ПАТ КБ “ПриватБанк”"
       bank_address: "Адрес банка"
-      bank_address_placeholder: "88888, вул. Городоцька, 25, Львів, Україна"
-      taxpayer_id: "Ідентифікаційний номер"
-      register_number: "Свідоцтво №"
-      register_number_start_date: "Дата створення свідоцтва"
+      bank_address_placeholder: "888888, ул. Городоцкая, 20, Львов, Украина"
+      taxpayer_id: "Идентификационный номер"
+      register_number: "Свидетельство №"
+      register_number_start_date: "Дата создания свидетельства"
       swift_code: "Bank SWIFT Code"
       iban_number: "IBAN"
       bank_code: "МФО"
-      

@@ -1,29 +1,35 @@
 .panel-body
-  = form_for @user, html: {:class => "form-horizontal"} do |f|
-    = render 'shared/errors', object: @user
+  = form_for @user, html: {:class => 'form-horizontal'} do |f|
+    = render partial: 'shared/errors', object: @user
     .row
       .general-group.col-md-6
         %h3.text-center
-          %strong= t("fields.en.general_fields")
-        = render partial: 'general_fields', locals: {f: f}
+          %strong= t('fields.en.general_fields')
+        = render partial: 'form_general_fields', locals: {f: f}
       .en-group.col-md-6
         %h3.text-center
-          %strong= t("fields.en.title")
+          %strong= t('fields.en.title')
         = f.fields_for :en_user_field do |ff|
-          = render partial: 'form_fields', locals: {f: ff, language: 'en'}
+          = render partial: 'form_different_languages_fields', locals: {f: ff, language: 'en'}
     .row
       .ua-group.col-md-6
         %h3.text-center
-          %strong= t("fields.ua.title")
+          %strong= t('fields.ua.title')
         = f.fields_for :ua_user_field do |ff|
-          = render partial: 'form_fields', locals: {f: ff, language: 'ua'}
+          = render partial: 'form_different_languages_fields', locals: {f: ff, language: 'ua'}
       .ru-group.col-md-6
         %h3.text-center
-          %strong= t("fields.ru.title")
+          %strong= t('fields.ru.title')
         = f.fields_for :ua_user_field do |ff|
-          = render partial: 'form_fields', locals: {f: ff, language: 'ru'}
+          = render partial: 'form_different_languages_fields', locals: {f: ff, language: 'ru'}
     .row
       .col-sm-6
-        = link_to 'Back', users_path, class: 'btn btn-primary btn-lg'
+        - if current_user
+          = link_to 'Back', user_path, class: 'btn btn-primary btn-lg'
+        - else
+          = link_to 'Back', users_path, class: 'btn btn-primary btn-lg'
       .col-sm-6
-        = f.submit 'Save', class: 'pull-right btn btn-primary btn-lg'
+        - if sign_up_page?
+          = f.submit 'Sign Up', class: 'pull-right btn btn-primary btn-lg'
+        - else
+          = f.submit 'Save', class: 'pull-right btn btn-primary btn-lg'
