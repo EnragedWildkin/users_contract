@@ -1,0 +1,9 @@
+ru:
+  defaults: &defaults
+    month_names:
+      [~, января , февраля , марта , апреля , мая , июня , июля , августа , сентября , октября , ноября , декабря]
+    formats:
+       default: "%d. %B %Y"
+       short: "%d.%m.%Y"
+  date:
+    <<: *defaults
