@@ -1,5 +1,16 @@
 en:
   hello: "Hello world"
+  index:
+    sign_up_or_log_in: "Sign Up or Log In"
+  edit:
+    edit_user: "Edit Profile"
+  new:
+    select_contract_and_person: "Select type of Contract and Person"
+    new_user: "New user"
+    preview: "Preview"
+    generate_pdf: "Generate PDF"
+    fields:
+      contract_number: "AAAyymmdd"
   fields:
     general:
       description: "Description"

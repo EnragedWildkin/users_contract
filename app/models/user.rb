@@ -14,4 +14,21 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :en_user_field
   accepts_nested_attributes_for :ua_user_field
   accepts_nested_attributes_for :ru_user_field
+
+  belongs_to :role
+  has_many :contracts
+  before_create :set_default_role
+
+  def name
+    en_user_field.last_name + " " + en_user_field.first_name
+  end
+
+  def admin?
+    role.name == "admin"
+  end
+
+  private
+  def set_default_role
+    self.role ||= Role.find_by_name('registered')
+  end
 end

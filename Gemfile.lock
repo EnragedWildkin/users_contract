@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/mbleigh/princely.git
+  revision: 7526cbefb632b19427b0f9f80428fe1717b18087
+  specs:
+    princely (2.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -205,6 +211,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.15)
+  princely!
   pry-rails
   puma
   rails (= 4.2.6)
