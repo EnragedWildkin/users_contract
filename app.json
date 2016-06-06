@@ -23,20 +23,7 @@
       "required": true
     }
   },
-  "formation": {
-    "worker": {
-      "quantity": 1
-    },
-    "web": {
-      "quantity": 1
-    }
-  },
   "addons": [
     "heroku-postgresql"
-  ],
-  "buildpacks": [
-    {
-      "url": "heroku/ruby"
-    }
   ]
 }

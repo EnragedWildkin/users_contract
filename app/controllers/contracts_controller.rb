@@ -2,7 +2,7 @@ class ContractsController < ApplicationController
   def new
     @contract = Contract.new
     @drafts =  Draft.pluck(:name, :id)
-    @users = User.joins(:en_user_field).map { |u| [u.name, u.id] }
+    @users = User.joins(:en_user_field).map { |u| [u.en_user_field.full_name, u.id] }
   end
 
   def generate

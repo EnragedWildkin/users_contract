@@ -1,0 +1,9 @@
+ua:
+  defaults: &defaults
+    month_names:
+      [~, січня , лютого , березня , квітня , травня , червня , липня , серпня , вересня , жовтня , листопада , грудня]
+    formats:
+       default: "%d. %B %Y"
+       short: "%d.%m.%Y"
+  date:
+    <<: *defaults
