@@ -19,10 +19,6 @@ class User < ActiveRecord::Base
   has_many :contracts
   before_create :set_default_role
 
-  def name
-    en_user_field.last_name + " " + en_user_field.first_name
-  end
-
   def admin?
     role.name == "admin"
   end
