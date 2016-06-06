@@ -18,10 +18,6 @@ class User < ActiveRecord::Base
   enum role: [:registered, :admin]
   has_many :contracts
 
-  def name
-    en_user_field.last_name + " " + en_user_field.first_name
-  end
-
   def admin?
     role == "admin"
   end
