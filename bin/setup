@@ -1,5 +1,4 @@
 #!/bin/sh
-
 echo "== Installing dependencies =="
 gem install bundler --conservative
 bundle check || bundle install
