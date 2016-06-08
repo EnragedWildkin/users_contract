@@ -1,114 +1,135 @@
-%table
-  %tr
-    %td
-      %h4.subtitle Технічне завдання
-      %p.subtitle
-        до договору № #{@contract.number} від #{locale_date(@contract.start_date, "%d %B %Y", :ua)}
-    %td
-      %h4.subtitle Specification of requirements
-      %p.subtitle
-        to contract # #{@contract.number} of #{locale_date(@contract.start_date, "%B %d, %Y", :en)}
-  %tr
-    %td.big_retreat
-      %p
-        Стосовно послуг ІТ Консультанта
-        #{@user.ru_user_field.last_name}а
-        #{@user.ua_user_field.first_name}a
-        #{@user.ru_user_field.middle_name}a,
-        на період з #{locale_date(@contract.start_date, "«%d» %B %Y", :ua)}.
-        по #{locale_date(@contract.end_date, "«%d» %B %Y", :ua)}. (обидва дні включно).
-        З можливістю продовження даного договору на підставах вказаних нижче.
-    %td.big_retreat
-      %p
-        As of IT consulting services of
-        #{@user.en_user_field.full_name},
-        for the period from #{locale_date(@contract.start_date, "%B %d, %Y", :en)}
-        to #{locale_date(@contract.end_date, "%B %d, %Y", :en)} (both days included).
-        With the possibility of extending the contract for the reasons listed below.
+.sor_llc_contract
+  %table
+    %tr
+      %td
+        %p.bold.center Технічне завдання
+        %p.center
+          до договору № #{@contract.number} від #{locale_date(@contract.start_date, "%d %B %Y", :ua)}
+      %td
+        %p.bold.center Specification of requirements
+        %p.center
+          to contract # #{@contract.number} of #{locale_date(@contract.start_date, "%B %d, %Y", :en)}
     %tr
       %td.little_retreat
-        %h5.underline 1. Завдання (задача):
+        %p
+          Стосовно послуг ІТ Консультанта
+          #{@user.ru_user_field.last_name}а
+          #{@user.ua_user_field.first_name}a
+          #{@user.ru_user_field.middle_name}a,
+          на період з #{locale_date(@contract.start_date, "«%d» %B %Y", :ua)}.
+          по #{locale_date(@contract.end_date, "«%d» %B %Y", :ua)}. (обидва дні включно).
+          З можливістю продовження даного договору на підставах вказаних нижче.
+      %td.little_retreat
+        %p
+          As of IT consulting services of
+          #{@user.en_user_field.full_name},
+          for the period from #{locale_date(@contract.start_date, "%B %d, %Y", :en)}
+          to #{locale_date(@contract.end_date, "%B %d, %Y", :en)} (both days included).
+          With the possibility of extending the contract for the reasons listed below.
+    %tr
+      %td.little_retreat
+        %p.bold.underline 1. Завдання (задача):
         %p IT консультування: розробка програмного забезпечення.
       %td.little_retreat
-        %h5.underline 1. Task (problem):
+        %p.bold.underline 1. Task (problem):
         %p IT consulting: software development.
     %tr
       %td.little_retreat
-        %h5.underline 2. Ім’я клієнта:
+        %p.bold.underline 2. Ім’я клієнта:
         %p JetThoughts LLC
       %td.little_retreat
-        %h5.underline 2. Client:
+        %p.bold.underline 2. Client:
         %p JetThoughts LLC
     %tr
       %td.little_retreat
-        %h5.underline 3. Контрактна цена:
+        %p.bold.underline 3. Контрактна цена:
         %p
           Оплата за консультаційні послуги буде розраховуватись згідно кількості наданих консультаційних
           годин. Погоджена ціна буде становити #{@user.ua_user_field.contract_price} за надані послуги
           в сфері розробки ПЗ.
       %td.little_retreat
-        %h5.underline 3. Contract price:
+        %p.bold.underline 3. Contract price:
         %p
           Payment for consulting services will be calculated according to the number of the provided
           consulting hours. Agreed price will be #{@user.en_user_field.contract_price} for the software
           development services provided.
     %tr
       %td.little_retreat
-        %h5.underline 4. Місцезнаходження:
+        %p.bold.underline 4. Місцезнаходження:
         %p= "#{@user.ua_user_field.location}."
       %td.little_retreat
-        %h5.underline 4. Location:
+        %p.bold.underline 4. Location:
         %p= "#{@user.en_user_field.location}."
     %tr
       %td.little_retreat
-        %h5.underline 5. Інші умови:
+        %p.bold.underline 5. Інші умови:
         %p 
           Надається можливість продовження даного окремого Договору на необхідний період дотримуючись
           аналогічних умов та строків. Дана можливість може застосовуватись не пізніше ніж за 1 тиждень до
           закінчення цього договору.
       %td.little_retreat
-        %h5.underline 5. Other Conditions:
+        %p.bold.underline 5. Other Conditions:
         %p 
           The possibility of the continuation of this particular Contract for the required period following
           similar terms and conditions. This possibility can be used no later than 1 week prior to the
           expiration of this contract.
     %tr
       %td.big_retreat
-        %h5 Замовник
+        %p.bold Замовник
         %p JetThoughts LLC
+        %br
         %p Адрес: 401 E 1st St Suite 1868 - 0039, Sanford FL , 32772
         %p Тел.: +1 760 264 4264
+        %br
+        %br
         %p Директор_______________________/ Nikitochkin Pavlo
       %td.big_retreat
-        %h5 The Company
+        %p.bold The Company
         %p JetThoughts LLC
+        %br
         %p Address: 401 E 1st St Suite 1868 - 0039, Sanford FL , 32772
         %p Phone: +1 760 264 4264
+        %br
+        %br
         %p Director________________________/ Nikitochkin Pavlo
     %tr
       %td.big_retreat
-        %h5 Виконавець
+        %p.bold Виконавець
         %p= "ФОП #{@user.ua_user_field.full_name}"
+        %br
         %p= "Адреса: #{@user.ua_user_field.address}"
+        %br
         %p= "Ідентифікаційний номер: #{@user.taxpayer_id}"
+        %br
         %p= "Свідоцтво № #{@user.register_number}"
         %p= "Від #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ua)}"
+        %br
         %p= "п/р № #{@user.ua_user_field.c_a_number}"
         %p= @user.ua_user_field.bank_name
         %p= "Адреса банку: #{@user.ua_user_field.bank_address}"
         %p= "Bank SWIFT Code #{@user.swift_code}"
         %p= "IBAN #{@user.iban_number}"
+        %br
+        %br
         %p= "ФОП________________________________/#{@user.ua_user_field.short_name}"
+        %br
       %td.big_retreat
-        %h5 The Contractor
+        %p.bold The Contractor
         %p= "PE #{@user.en_user_field.full_name}"
+        %br
         %p= "Address: #{@user.en_user_field.address}"
+        %br
         %p= "Taxpayer ID: #{@user.taxpayer_id}"
+        %br
         %p= "Register № #{@user.register_number}"
         %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        %br
         %p= "c/a № #{@user.en_user_field.c_a_number}"
         %p= @user.en_user_field.bank_name
         %p= "Bank Address: #{@user.ua_user_field.bank_address}"
         %p= "Bank SWIFT Code #{@user.swift_code}"
         %p= "IBAN #{@user.iban_number}"
+        %br
+        %br
         %p= "PE_________________________________/#{@user.en_user_field.short_name}"
+        %br
