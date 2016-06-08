@@ -1,3 +1,4 @@
+
 /* Headers and footers for NDA LLC template */
 div.nda_llc_contract {
   page: nda_llc_contract;
@@ -7,7 +8,7 @@ div.nda_llc_contract {
 @page nda_llc_contract {
   @top {
     margin-bottom: 11pt;
-    font-family: Times, Serif;
+    font-family: 'Times New Roman';
     font-size: 11pt;
     content: "The regulation on protection of intellectual property";
     vertical-align: bottom;
@@ -42,7 +43,7 @@ div.nda_llc_contract {
   margin-bottom: 70pt;
 }
 body {
-  font-family: Times, Serif;
+  font-family: 'Times New Roman';
   font-size: 11pt;
   text-align: justify;
 }
