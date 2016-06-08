@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Times New Roman";
+  src: url("TimesNewRomanRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Times New Roman";
+  src: url("TimesNewRomanBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: bold;
+}

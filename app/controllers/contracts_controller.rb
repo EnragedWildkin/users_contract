@@ -12,9 +12,9 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: 'pdf_only', template: "contracts/generate/template_#{@contract.draft.id}" }
-      format.pdf { render_with_princely template: "contracts/generate/template_#{@contract.draft.id}",
+      format.pdf { render template: "contracts/generate/template_#{@contract.draft.id}",
         pdf: "#{@contract.draft.name}_#{@user.en_user_field.last_name}",
-        stylesheets: ["application", "prince"]
+        stylesheets: ["app/assets/javascripts/application.js", 'app/assets/fonts/times_new_roman.css', "app/assets/stylesheets/prince.css"]
       }
     end
   end
