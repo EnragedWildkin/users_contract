@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       if @user.save
         login(params[:user][:email], params[:user][:password])
 
-        format.html { redirect_to :users, notice: 'User was successfully created.' }
+        format.html { redirect_to current_user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

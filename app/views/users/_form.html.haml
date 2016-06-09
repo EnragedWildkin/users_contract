@@ -20,7 +20,7 @@
       .ru-group.col-md-6
         %h3.text-center
           %strong= t('fields.ru.title')
-        = f.fields_for :ua_user_field do |ff|
+        = f.fields_for :ru_user_field do |ff|
           = render partial: 'form_different_languages_fields', locals: { f: ff, language: 'ru' }
     .row
       .col-sm-6
