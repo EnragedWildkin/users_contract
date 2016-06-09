@@ -1,6 +1,6 @@
 .panel-body
   = form_for @user, html: { class: 'form-horizontal' } do |f|
-    = render partial: 'shared/errors', object: @user
+    = render partial: 'shared/errors', locals: { target: @user }
     .row
       .general-group.col-md-6
         %h3.text-center
@@ -20,14 +20,14 @@
       .ru-group.col-md-6
         %h3.text-center
           %strong= t('fields.ru.title')
-        = f.fields_for :ua_user_field do |ff|
+        = f.fields_for :ru_user_field do |ff|
           = render partial: 'form_different_languages_fields', locals: { f: ff, language: 'ru' }
     .row
       .col-sm-6
         - if current_user
           = link_to 'Back', user_path, class: 'btn btn-primary btn-lg'
         - else
-          = link_to 'Back', users_path, class: 'btn btn-primary btn-lg'
+          = link_to 'Back', root_path, class: 'btn btn-primary btn-lg'
       .col-sm-6
         - if sign_up_page?
           = f.submit 'Sign Up', class: 'pull-right btn btn-primary btn-lg'
