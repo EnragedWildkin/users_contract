@@ -58,10 +58,10 @@ table td {
   padding: 0px 10px 0px 10px;
 }
 table td:first-child {
-border-right: 1px solid #000;
+  border-right: 1px solid #000;
 }
 table td:last-child {
-border-left: 1px solid #000;
+  border-left: 1px solid #000;
 }
 p {
   margin-top: 0px;

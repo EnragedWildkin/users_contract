@@ -3,10 +3,10 @@
   .col-sm-7= f.email_field :email, class: 'form-control', required: true
 .form-group
   .col-sm-5= f.label :password
-  .col-sm-7= f.password_field :password, class: 'form-control', required: true
+  .col-sm-7= f.password_field :password, class: 'form-control'
 .form-group
   .col-sm-5= f.label :password_confirmation
-  .col-sm-7= f.password_field :password_confirmation, class: 'form-control', required: true
+  .col-sm-7= f.password_field :password_confirmation, class: 'form-control'
 .form-group
   .col-sm-5= f.label :taxpayer_id, t('fields.en.taxpayer_id')
   .col-sm-7= f.text_field :taxpayer_id, class: 'form-control', required: true
