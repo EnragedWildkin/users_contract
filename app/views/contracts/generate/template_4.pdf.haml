@@ -725,7 +725,7 @@
         %p= "МФО #{@user.bank_code}"
         %br
         %br
-        %p= "ФЛП________________________________/#{@user.ua_user_field.short_name}"
+        %p= "ФЛП_____________________/ #{@user.ru_user_field.name_with_initials}"
         %br
       %td.big_retreat
         %p.bold The Contractor
@@ -743,5 +743,5 @@
         %p= "Bank Code #{@user.bank_code}"
         %br
         %br
-        %p= "PE_________________________________/#{@user.en_user_field.short_name}"
+        %p= "PE_____________________/ #{@user.en_user_field.short_name}"
         %br

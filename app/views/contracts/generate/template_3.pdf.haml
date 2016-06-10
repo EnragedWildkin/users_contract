@@ -719,7 +719,7 @@
         %p= "IBAN #{@user.iban_number}"
         %br
         %br
-        %p= "ФОП________________________________/#{@user.ua_user_field.short_name}"
+        %p= "ФОП_____________________/ #{@user.ua_user_field.name_with_initials}"
         %br
       %td.big_retreat
         %p.bold The Contractor
@@ -739,5 +739,5 @@
         %p= "IBAN #{@user.iban_number}"
         %br
         %br
-        %p= "PE_________________________________/#{@user.en_user_field.short_name}"
+        %p= "PE_____________________/ #{@user.en_user_field.short_name}"
         %br

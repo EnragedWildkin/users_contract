@@ -12,17 +12,13 @@
     %tr
       %td.little_retreat
         %p
-          Касательно услуг IT консультанта
-          #{@user.ru_user_field.last_name}а
-          #{@user.ru_user_field.first_name}a
-          #{@user.ru_user_field.middle_name}a,
+          Касательно услуг IT консультанта, ИП #{@user.ru_user_field.full_name},
           на период с #{locale_date(@contract.start_date, "«%d» %B %Y", :ru)}.
           по #{locale_date(@contract.end_date, "«%d» %B %Y", :ru)}. (Оба дня включительно).
           С возможностью продления данного договора по основаниям указанным ниже.
       %td.little_retreat
         %p
-          As of IT consulting services of
-          #{@user.en_user_field.full_name}
+          As of IT consulting services of PE #{@user.en_user_field.full_name}
           for the period from #{locale_date(@contract.start_date, "%B %d, %Y", :en)}
           to #{locale_date(@contract.end_date, "%B %d, %Y", :en)} (both days included).
           With the possibility of extending the contract for the reasons listed below.
@@ -109,7 +105,7 @@
           %p= "МФО #{@user.bank_code}"
           %br
           %br
-          %p= "ФЛП________________________________/#{@user.ru_user_field.short_name}"
+          %p= "ФЛП________________________/ #{@user.ru_user_field.name_with_initials}"
           %br
         %td.big_retreat
           %p.bold The Contractor
@@ -127,5 +123,5 @@
           %p= "Bank Code #{@user.bank_code}"
           %br
           %br
-          %p= "PE_________________________________/#{@user.en_user_field.short_name}"
+          %p= "PE________________________/ #{@user.en_user_field.short_name}"
           %br

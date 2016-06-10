@@ -25,11 +25,11 @@
     .row
       .col-sm-6
         - if current_user
-          = link_to 'Back', user_path, class: 'btn btn-primary btn-lg'
+          = link_to t('back'), user_path, class: 'btn btn-primary btn-lg'
         - else
-          = link_to 'Back', root_path, class: 'btn btn-primary btn-lg'
+          = link_to t('back'), root_path, class: 'btn btn-primary btn-lg'
       .col-sm-6
         - if sign_up_page?
-          = f.submit 'Sign Up', class: 'pull-right btn btn-primary btn-lg'
+          = f.submit t('sign_up'), class: 'pull-right btn btn-primary btn-lg'
         - else
-          = f.submit 'Save', class: 'pull-right btn btn-primary btn-lg'
+          = f.submit t('save'), class: 'pull-right btn btn-primary btn-lg'
