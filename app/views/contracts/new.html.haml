@@ -9,11 +9,11 @@
     .row.contract_start_date
       .form-group.col-md-4
         = f.label :contract_start_date
-        = f.date_field(:start_date, class: 'form-control', required: true)
+        = f.date_field(:start_date, value: today_date, class: 'form-control', required: true)
     .row.contract_end_date
       .form-group.col-md-4
         = f.label :contract_end_date
-        = f.date_field(:end_date, class: 'form-control', required: true)
+        = f.date_field(:end_date, value: today_date, class: 'form-control', required: true)
     = f.select(:draft_id, options_for_select(@drafts), {}, class: 'btn btn-primary')
     = f.select(:user_id, options_for_select(@users), {}, class: 'btn btn-primary')
     = f.submit t('new.preview'), class: 'btn btn-default preview'
