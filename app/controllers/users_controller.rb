@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @edit_admin = @user.admin?
   end
 
   def create
