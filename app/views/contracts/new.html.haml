@@ -14,7 +14,14 @@
       .form-group.col-md-4
         = f.label :contract_end_date
         = f.date_field(:end_date, value: today_date, class: 'form-control', required: true)
-    = f.select(:draft_id, options_for_select(@drafts), {}, class: 'btn btn-primary')
-    = f.select(:user_id, options_for_select(@users), {}, class: 'btn btn-primary')
-    = f.submit t('new.preview'), class: 'btn btn-default preview'
-    = link_to t('new.generate_pdf'), '#', class: 'btn btn-danger generate_pdf'
+    .row
+      .btn-group.control.col-md-7
+        = f.select(:draft_id, options_for_select(@drafts), {}, class: 'btn btn-primary')
+        = f.select(:user_id, options_for_select(@users), {}, class: 'btn btn-primary')
+        = link_to t('edit.user'), "#", class: 'btn btn-default edit'
+      .btn-group.control.col-md-5
+        = f.submit t('new.preview'), class: 'btn btn-success preview'
+        = link_to t('new.generate_pdf'), '#', class: 'btn btn-danger generate_pdf'
+
+:javascript
+  $(function(){ new window.AdminEditUser() });
