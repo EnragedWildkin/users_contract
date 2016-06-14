@@ -1,5 +1,5 @@
 %h1.title= t('edit.edit_profile')
-- if current_user.admin?
+- if current_user&.admin? && @edit_admin
   = render 'admin_form'
 - else
   %h2.title= t('field_is_not_necessary')

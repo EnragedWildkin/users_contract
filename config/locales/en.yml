@@ -18,7 +18,7 @@ en:
   index:
     sign_up_or_log_in: "Sign Up or Log In"
   edit:
-    edit_user: "Edit Profile"
+    user: "Edit User"
   new:
     select_contract_and_person: "Select type of Contract and Person"
     new_user: "New user"

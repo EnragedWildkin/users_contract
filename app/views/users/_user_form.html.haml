@@ -24,7 +24,9 @@
           = render partial: 'form_different_languages_fields', locals: { f: ff, language: 'ru' }
     .row
       .col-sm-6
-        - if current_user
+        - if current_user&.admin?
+          = link_to t('back'), new_contract_path, class: 'btn btn-primary btn-lg'
+        - elsif current_user
           = link_to t('back'), user_path, class: 'btn btn-primary btn-lg'
         - else
           = link_to t('back'), root_path, class: 'btn btn-primary btn-lg'
