@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:index, :new, :create]
 
   def index
-    @users = User.all
+    @users = User.where.not(role: Role.find_by_name('admin'))
   end
 
   def show
@@ -35,11 +35,12 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       if current_user.admin?
-        redirect_to new_contract_path, notice: 'User was successfully updated.'
+        redirect_to root_path, notice: 'User was successfully updated.'
       else
         redirect_to current_user, notice: 'User was successfully updated.'
       end
     else
+      @edit_admin = @user.admin? if current_user.admin?
       render :edit
     end
   end

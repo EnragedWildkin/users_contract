@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
   def create
     if login(params[:email], params[:password])
       if current_user.admin?
-        redirect_back_or_to(new_contract_path, notice: 'Login successful')
+        redirect_back_or_to(root_path, notice: 'Login successful')
       else
         redirect_back_or_to(current_user, notice: 'Login successful')
       end

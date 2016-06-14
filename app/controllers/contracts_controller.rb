@@ -1,8 +1,7 @@
 class ContractsController < ApplicationController
+  before_action :set_drafts, only: [:new, :generate]
   def new
     @contract = Contract.new
-    @drafts =  Draft.pluck(:name, :id)
-    @users = User.joins(:en_user_field).map { |u| [u.en_user_field.full_name, u.id] }
   end
 
   def generate
@@ -27,6 +26,10 @@ class ContractsController < ApplicationController
 
   private
   def contract_params
-    params.require(:contract).permit(:user_id, :draft_id, :pdf, :number, :start_date, :end_date)
+    params.require(:contract).permit(:draft_id, :pdf, :number, :start_date, :end_date)
+  end
+
+  def set_drafts
+    @drafts = Draft.pluck(:name, :id)
   end
 end

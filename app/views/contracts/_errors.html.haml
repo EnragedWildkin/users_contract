@@ -3,7 +3,7 @@
     %a.close{"aria-label" => "close", "data-dismiss" => "alert", href: "#"} &times;
     %strong
       #{pluralize(target.errors.count, "error")} prohibited this #{target.class.name.downcase}
-      from being saved:
+      from generating pdf:
     %ul
-      - target.errors.full_messages.each do |msg|
-        %p= msg
+      - target.errors.messages.each do |kay, msg|
+        %p= msg.first
