@@ -4,6 +4,7 @@
       .navbar-form.navbar-right
         .btn-group
           - if current_user
+            = link_to(t('users_list'), users_path, class: 'btn btn-success') if current_user.admin?
             = link_to(t('edit_profile'), edit_user_path(current_user.id), class: 'btn btn-primary') unless edit_page?
             = link_to(t('log_out'), :log_out, method: :post, class: 'btn btn-primary')
           - else
