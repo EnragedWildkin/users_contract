@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_permissions
   skip_before_action :require_login, only: [:index, :new, :create]
 
   def index
@@ -100,5 +101,14 @@ class UsersController < ApplicationController
         :bank_address
       ]
     )
+  end
+
+  def check_permissions
+    unless @user == current_user || current_user.admin?
+      flash[:alert] = 'Permission denied'
+      redirect_to user_path(current_user)
+    else
+      return true
+    end
   end
 end
