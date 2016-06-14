@@ -9,7 +9,8 @@ class SorceryCore < ActiveRecord::Migration
       t.date    :register_number_start_date
       t.string  :swift_code
       t.integer :iban_number
-      t.integer :bank_code 
+      t.integer :bank_code
+      t.integer :role, default: 0, null: false
 
       t.timestamps
     end

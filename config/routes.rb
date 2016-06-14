@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   post 'log_out', to: 'user_sessions#destroy', as: :log_out
 
   resources :password_resets, only: [:create, :edit, :update]
+
+  resources :contracts, only: [:new] do
+    get 'generate', on: :collection
+  end
 end

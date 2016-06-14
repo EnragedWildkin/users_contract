@@ -57,3 +57,5 @@ end
 gem 'sorcery'
 # Email format validation
 gem 'validates_email_format_of'
+# PDF generation
+gem 'princely', github: 'mbleigh/princely'

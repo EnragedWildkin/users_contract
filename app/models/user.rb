@@ -14,4 +14,15 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :en_user_field
   accepts_nested_attributes_for :ua_user_field
   accepts_nested_attributes_for :ru_user_field
+
+  enum role: [:registered, :admin]
+  has_many :contracts
+
+  def name
+    en_user_field.last_name + " " + en_user_field.first_name
+  end
+
+  def admin?
+    role == "admin"
+  end
 end

@@ -1,18 +1,14 @@
 [
   "SOR-LLC-draft-Ukraine",
-  "SOR-LLC-draft_Russia",
+  "SOR-LLC-draft-Russia",
   "NDA-LLC-draft-Ukraine",
-  "NDA-LLC-draft_Russia"
+  "NDA-LLC-draft-Russia"
 ].each { |name| Draft.find_or_create_by({ name: name }) }
-
-["registered", "admin"].each do |role|
-  Role.find_or_create_by({ name: role })
-end
 
 admin = User.find_or_create_by(email: "admin@email.com") do |user|
   user.password = "12345admin"
   user.password_confirmation = "12345admin"
-  user.role = Role.find_by_name("admin")
+  user.role = "admin"
 end
 
 user1 = User.find_or_create_by(email: "user1@email.com") do |user|

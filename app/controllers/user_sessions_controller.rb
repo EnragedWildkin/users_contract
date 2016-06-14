@@ -7,7 +7,11 @@ class UserSessionsController < ApplicationController
 
   def create
     if login(params[:email], params[:password])
-      redirect_back_or_to(current_user, notice: 'Login successful')
+      if current_user.admin?
+        redirect_back_or_to(new_contract_path, notice: 'Login successful')
+      else
+        redirect_back_or_to(current_user, notice: 'Login successful')
+      end
     else
       flash.now[:alert] = 'Login failed'
       render action: 'new'
