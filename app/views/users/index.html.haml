@@ -1,21 +1,18 @@
-- if current_user&.admin?
-  %table.table.table-hover
-    %thead
+%table.table.table-hover
+  %thead
+    %tr
+      %th Full name
+      %th Email
+      %th Address
+      %th Contract price
+      %th Admin controls
+  %tbody
+    - @users.each do |user|
       %tr
-        %th Full name
-        %th Email
-        %th Address
-        %th Contract price
-        %th Admin controls
-    %tbody
-      - @users.each do |user|
-        %tr
-          %td= link_to "#{user.en_user_field.full_name}", user_path(user)
-          %td= user.email
-          %td= user.en_user_field.address
-          %td= user.en_user_field.contract_price
-          %td
-            = link_to t('edit.user'), edit_user_path(user), class: 'btn btn-default'
-            = link_to t('new.generate_pdf'), new_user_contract_path(user), class: 'btn btn-success'
-- else
-  %h1= t('index.sign_up_or_login')
+        %td= link_to "#{user.en_user_field.full_name}", user_path(user)
+        %td= user.email
+        %td= user.en_user_field.address
+        %td= user.en_user_field.contract_price
+        %td
+          = link_to t('edit.user'), edit_user_path(user), class: 'btn btn-default'
+          = link_to t('new.generate_pdf'), new_user_contract_path(user), class: 'btn btn-success'

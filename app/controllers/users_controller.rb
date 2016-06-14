@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user.save
       login(params[:user][:email], params[:user][:password])
 
-      redirect_to current_user, notice: 'User was successfully created.'
+      redirect_to root_path, notice: 'User was successfully created.'
     else
       render :new
     end
@@ -35,11 +35,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      if current_user.admin?
-        redirect_to root_path, notice: 'User was successfully updated.'
-      else
-        redirect_to current_user, notice: 'User was successfully updated.'
-      end
+      redirect_to root_path, notice: 'User was successfully updated.'
     else
       @edit_admin = @user.admin? if current_user.admin?
       render :edit
@@ -48,7 +44,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    redirect_to root_path, notice: 'User was successfully destroyed.'
   end
 
   private
