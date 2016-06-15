@@ -15,4 +15,5 @@
         %td= user.en_user_field.contract_price
         %td
           = link_to t('edit.user'), edit_user_path(user), class: 'btn btn-default'
+          = link_to t('destroy.user'), user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
           = link_to t('new.generate_pdf'), new_user_contract_path(user), class: 'btn btn-success'

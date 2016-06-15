@@ -29,6 +29,8 @@ en:
     generate_pdf: "Generate PDF"
     fields:
       contract_number: "AAAyymmdd"
+  destroy:
+    user: "Destroy User"
   fields:
     general:
       description: "Description"

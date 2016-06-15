@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_permissions
-  skip_before_action :require_login, only: [:index, :new, :create]
+  skip_before_action :require_login, only: [:new, :create]
 
   def index
     @users = User.where.not(role: Role.find_by_name('admin'))
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.skip_email_and_password_validation if admin?
 
     if @user.save
       login(params[:user][:email], params[:user][:password])
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, notice: 'User was successfully updated.'
     else
-      @edit_admin = @user.admin? if current_user.admin?
+      @edit_admin = @user.admin? if admin?
       render :edit
     end
   end
@@ -48,6 +49,10 @@ class UsersController < ApplicationController
   end
 
   private
+  def admin?
+    current_user && current_user.admin?
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
@@ -63,40 +68,24 @@ class UsersController < ApplicationController
       :swift_code,
       :iban_number,
       :bank_code,
-      en_user_field_attributes: [
-        :first_name,
-        :last_name,
-        :middle_name,
-        :contract_price,
-        :location,
-        :address,
-        :c_a_number,
-        :bank_name,
-        :bank_address
-      ],
-      ua_user_field_attributes: [
-        :first_name,
-        :last_name,
-        :middle_name,
-        :contract_price,
-        :location,
-        :address,
-        :c_a_number,
-        :bank_name,
-        :bank_address
-      ],
-      ru_user_field_attributes: [
-        :first_name,
-        :last_name,
-        :middle_name,
-        :contract_price,
-        :location,
-        :address,
-        :c_a_number,
-        :bank_name,
-        :bank_address
-      ]
+      en_user_field_attributes: user_field_attributes,
+      ua_user_field_attributes: user_field_attributes,
+      ru_user_field_attributes: user_field_attributes
     )
+  end
+
+  def user_field_attributes
+    [
+      :first_name,
+      :last_name,
+      :middle_name,
+      :contract_price,
+      :location,
+      :address,
+      :c_a_number,
+      :bank_name,
+      :bank_address
+    ]
   end
 
   def check_permissions

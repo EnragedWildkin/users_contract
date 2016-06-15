@@ -26,7 +26,4 @@
       .col-sm-6
         = link_to t('back'), root_path, class: 'btn btn-primary btn-lg'
       .col-sm-6
-        - if sign_up_page?
-          = f.submit t('sign_up'), class: 'pull-right btn btn-primary btn-lg'
-        - else
-          = f.submit t('save'), class: 'pull-right btn btn-primary btn-lg'
+        = f.submit t('save'), class: 'pull-right btn btn-primary btn-lg'
