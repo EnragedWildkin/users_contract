@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601153739) do
+ActiveRecord::Schema.define(version: 20160605100307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contracts", force: :cascade do |t|
+    t.string   "number"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "user_id"
+    t.integer  "draft_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drafts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "user_fields", force: :cascade do |t|
     t.string   "first_name"
@@ -33,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160601153739) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                           null: false
+    t.string   "email",                                       null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.integer  "taxpayer_id"
@@ -42,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160601153739) do
     t.string   "swift_code"
     t.integer  "iban_number"
     t.integer  "bank_code"
+    t.integer  "role",                            default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_me_token"
