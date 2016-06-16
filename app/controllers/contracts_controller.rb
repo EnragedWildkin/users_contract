@@ -2,6 +2,8 @@ class ContractsController < ApplicationController
   before_action :set_drafts, only: [:new, :generate]
   def new
     @contract = Contract.new
+    @contract.build_en_contract_field
+    @contract.build_ua_contract_field
   end
 
   def generate
@@ -32,7 +34,23 @@ class ContractsController < ApplicationController
 
   private
   def contract_params
-    params.require(:contract).permit(:draft_id, :pdf, :number, :start_date, :end_date)
+    params.require(:contract).permit(
+      :draft_id,
+      :pdf,
+      :number,
+      :start_date,
+      :end_date,
+      en_contract_field_attributes: contract_field_attributes,
+      ua_contract_field_attributes: contract_field_attributes
+    )
+  end
+
+  def contract_field_attributes
+    [
+      :customer_payment,
+      :maximum_bonuses_size,
+      :total_payments
+    ]
   end
 
   def set_drafts

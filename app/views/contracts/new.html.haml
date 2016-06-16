@@ -1,20 +1,20 @@
-%h1= t('new.select_contract_and_person')
+%h1= t('new.select_contract')
 .col-md-4.col-md-offset-4
   = form_for @contract, url: { action: "generate" }, method: :get do |f|
     = render partial: 'errors', locals: { target: @contract }
     = f.hidden_field :pdf, value: false
-    .row.contract_number
-      .form-group.col-md-10.col-md-offset-1
-        = f.label :contract_number
-        = f.text_field(:number, placeholder: t('new.fields.contract_number'), class: 'form-control')
-    .row.contract_start_date
-      .form-group.col-md-10.col-md-offset-1
-        = f.label :contract_start_date
-        = f.date_field(:start_date, value: today_date, class: 'form-control')
-    .row.contract_end_date
-      .form-group.col-md-10.col-md-offset-1
-        = f.label :contract_end_date
-        = f.date_field(:end_date, value: today_date, class: 'form-control')
+    = render partial: 'form_general_fields', locals: { f: f }
+    .consulting_fields
+      .en-group
+        %h4.text-center
+          %strong= t('fields.en.title')
+        = f.fields_for :en_contract_field do |ff|
+          = render partial: 'form_different_languages_fields', locals: { f: ff, language: 'en' }
+      .ua-group
+        %h4.text-center
+          %strong= t('fields.ua.title')
+        = f.fields_for :ua_contract_field do |ff|
+          = render partial: 'form_different_languages_fields', locals: { f: ff, language: 'ua' }
     .row.draft
       .form-group.col-md-10.col-md-offset-1
         = f.label :select_draft
@@ -27,4 +27,4 @@
           .btn-group
             = f.submit t('new.preview'), class: 'btn btn-default preview'
           .btn-group
-            = link_to t('new.generate_pdf'), '#', class: 'btn btn-default generate_pdf'
+            = link_to t('pdf'), '#', class: 'btn btn-default generate_pdf'

@@ -1,0 +1,12 @@
+.row.customer_payment
+  .form-group.col-md-10.col-md-offset-1
+    = f.label :customer_payment, t("fields.#{language}.customer_payment")
+    = f.text_field :customer_payment, placeholder: t("fields.#{language}.customer_payment_placeholder"), class: 'form-control'
+.row.maximum_bonuses_size
+  .form-group.col-md-10.col-md-offset-1
+    = f.label :maximum_bonuses_size, t("fields.#{language}.maximum_bonuses_size")
+    = f.text_field :maximum_bonuses_size, placeholder: t("fields.#{language}.maximum_bonuses_size_placeholder"), class: 'form-control'
+.row.total_payments
+  .form-group.col-md-10.col-md-offset-1
+    = f.label :total_payments, t("fields.#{language}.total_payments")
+    = f.text_field :total_payments, placeholder: t("fields.#{language}.total_payments_placeholder"), class: 'form-control'

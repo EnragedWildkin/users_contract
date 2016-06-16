@@ -8,9 +8,12 @@ $ ->
     $('#contract_pdf').val 'false'
 
 # Don't show end_date field on NDA templates
-  hide_fields = ['3','4']
+  fields_without_end_date = [
+    'NDA-LLC-draft-Ukraine',
+    'NDA-LLC-draft_Russia'
+  ]
   $('#contract_draft_id').change ->
-    if $.inArray($('#contract_draft_id').val(), hide_fields) >= 0
+    if $.inArray($('#contract_draft_id').find('option:selected').text(), fields_without_end_date) >= 0
       $('#contract_end_date').val ''
       $('#contract_end_date').attr('required', false)
       $('.contract_end_date').hide('slow')
@@ -18,13 +21,14 @@ $ ->
       $('.contract_end_date').show('slow')
       $('#contract_end_date').attr('required', true)
 
-# Edit user chosen in the select tag(#contract_user_id)
-class window.AdminEditUser
-  constructor: ->
-    url =  '/users/' + $('#contract_user_id').val() + '/edit'
-    $('.edit').attr('href', url)
-    $('#contract_user_id').change ->
-      url = '/users/' + $(this).val() + '/edit'
-      if url
-        $('.edit').attr 'href', url
-      false
+# Don't show Consulting-Services-draft fields when generate another draft type
+  show_consulting_fields()
+  $('#contract_draft_id').change ->
+    show_consulting_fields()
+
+show_consulting_fields = ->
+  consulting_draft = 'Consulting-Services-draft'
+  if $('#contract_draft_id').find('option:selected').text() == consulting_draft
+    $('.consulting_fields').show('slow')
+  else
+    $('.consulting_fields').hide('slow')

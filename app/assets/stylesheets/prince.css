@@ -1,5 +1,5 @@
 
-/* Headers and footers for NDA LLC template */
+/* Headers and footers for NDA LLC drafts */
 div.nda_llc_contract {
   page: nda_llc_contract;
   page-break-before: right;
@@ -68,7 +68,7 @@ p {
   margin-bottom: 0px;
 }
 
-/* Styles for SOR_LLC temtlate */
+/* Styles for SOR_LLC drafts */
 .sor_llc_contract p {
   font-size: 10pt;
 }
@@ -108,4 +108,30 @@ p {
 .little_retreat {
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+/* Styles for Consulting-Services drafts */
+.consulting_services p {
+  font-size: 10pt;
+}
+.consulting_services table {
+  border: none;
+}
+.consulting_services table td {
+  border: none;
+}
+.consulting_services .data table {
+  width: 100%;
+}
+.consulting_services .data table td {
+  padding: 15px 20px 0px 20px;
+}
+.consulting_services .width-10 {
+  width: 10%;
+}
+.consulting_services .width-40 {
+  width: 40%;
+}
+.consulting_services .left_padding_50 {
+  padding-left: 50px;
 }
