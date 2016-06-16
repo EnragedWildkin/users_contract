@@ -17,6 +17,9 @@
   .col-sm-5= f.label :address, t("fields.#{language}.address")
   .col-sm-7= f.text_field :address, class: 'form-control', placeholder: t("fields.#{language}.address_placeholder")
 .form-group
+  .col-sm-5= f.label :passport_issued_by, t("fields.#{language}.passport_issued_by")
+  .col-sm-7= f.text_area :passport_issued_by, class: 'form-control', placeholder: t("fields.#{language}.passport_issued_by_placeholder")
+.form-group
   .col-sm-5= f.label :c_a_number, t("fields.#{language}.c_a_number")
   .col-sm-7= f.text_field :c_a_number, class: 'form-control', placeholder: t("fields.#{language}.c_a_number_placeholder")
 .form-group

@@ -10,4 +10,6 @@ class Contract < ActiveRecord::Base
 
   accepts_nested_attributes_for :en_contract_field
   accepts_nested_attributes_for :ua_contract_field
+
+  belongs_to :person_type
 end

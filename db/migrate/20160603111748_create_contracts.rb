@@ -6,6 +6,7 @@ class CreateContracts < ActiveRecord::Migration
       t.date       :end_date
       t.belongs_to :user
       t.belongs_to :draft
+      t.belongs_to :person_type
 
       t.timestamps null: false
     end

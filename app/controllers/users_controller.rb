@@ -68,6 +68,9 @@ class UsersController < ApplicationController
       :swift_code,
       :iban_number,
       :bank_code,
+      :passport_number,
+      :intermediary_bank_name,
+      :intermediary_bank_swift_code,
       en_user_field_attributes: user_field_attributes,
       ua_user_field_attributes: user_field_attributes,
       ru_user_field_attributes: user_field_attributes
@@ -82,6 +85,7 @@ class UsersController < ApplicationController
       :contract_price,
       :location,
       :address,
+      :passport_issued_by,
       :c_a_number,
       :bank_name,
       :bank_address

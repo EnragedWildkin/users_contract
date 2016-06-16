@@ -25,3 +25,12 @@
 .form-group
   .col-sm-5= f.label :bank_code, t('fields.en.bank_code')
   .col-sm-7= f.text_field :bank_code, class: 'form-control'
+.form-group
+  .col-sm-5= f.label :passport_number, t('fields.en.passport_number')
+  .col-sm-7= f.text_field :passport_number, class: 'form-control'
+.form-group
+  .col-sm-5= f.label :intermediary_bank_name, t('fields.en.intermediary_bank_name')
+  .col-sm-7= f.text_field :intermediary_bank_name, class: 'form-control', placeholder: t('fields.en.intermediary_bank_name_placeholder')
+.form-group
+  .col-sm-5= f.label :intermediary_bank_swift_code, t('fields.en.intermediary_bank_swift_code')
+  .col-sm-7= f.text_field :intermediary_bank_swift_code, class: 'form-control'

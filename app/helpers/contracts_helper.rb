@@ -22,4 +22,8 @@ module ContractsHelper
   def country(full_address)
     full_address.split(', ')[-1]
   end
+
+  def person_type_for_locale(type, language)
+    t("fields.#{language}.#{type.downcase.split(' ').join('_')}")
+  end
 end

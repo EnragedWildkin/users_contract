@@ -1,5 +1,9 @@
-$ ->
-# Set contract_pdf field to true if press button "Generate PDF"
+class @ContractNew
+  constructor: ->
+    initFunc()
+
+initFunc = ->
+  # Set contract_pdf field to true if press button "Generate PDF"
   $('.generate_pdf').click (e)->
     e.preventDefault()
     $('#contract_pdf').val 'true'
@@ -7,7 +11,7 @@ $ ->
   $('.preview').click ->
     $('#contract_pdf').val 'false'
 
-# Don't show end_date field on NDA templates
+  # Don't show end_date field on NDA templates
   fields_without_end_date = [
     'NDA-LLC-draft-Ukraine',
     'NDA-LLC-draft_Russia'
@@ -21,12 +25,12 @@ $ ->
       $('.contract_end_date').show('slow')
       $('#contract_end_date').attr('required', true)
 
-# Don't show Consulting-Services-draft fields when generate another draft type
-  show_consulting_fields()
+  # Don't show Consulting-Services-draft fields when generate another draft type
+  showConsultingFields()
   $('#contract_draft_id').change ->
-    show_consulting_fields()
+    showConsultingFields()
 
-show_consulting_fields = ->
+showConsultingFields = ->
   consulting_draft = 'Consulting-Services-draft'
   if $('#contract_draft_id').find('option:selected').text() == consulting_draft
     $('.consulting_fields').show('slow')

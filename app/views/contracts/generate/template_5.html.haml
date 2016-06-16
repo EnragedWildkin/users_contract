@@ -18,7 +18,7 @@
           %p Managing Member: Theodore King
         %p and:
         .left_padding_50
-          %p= @user.en_user_field.short_name
+          %p= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.short_name}"
           %p
             #{street(@user.en_user_field.address)},
             #{city(@user.en_user_field.address)},
@@ -34,7 +34,7 @@
           %p Директор: Теодор Кінг
         %p та:
         .left_padding_50
-          %p= "ФОП #{@user.ua_user_field.short_name}"
+          %p= "#{person_type_for_locale(@person_type, :ua)} #{@user.ua_user_field.full_name}"
           %p
             #{street(@user.ua_user_field.address)},
             #{city(@user.ua_user_field.address)},
@@ -104,7 +104,7 @@
           provided by Consultant under this agreement. Additionally, Consultant will be eligible to be
           considered for an annual incentive bonus each fiscal year based upon the achievement of certain
           objective or subjective criteria established by the Customer of up to
-          $US$#{@contract.en_contract_field.maximum_bonuses_size}. The determinations of the Customer with
+          US$#{@contract.en_contract_field.maximum_bonuses_size}. The determinations of the Customer with
           respect to such bonus shall be final and binding.
       %td.big_retreat
         %p.bold 3. Компенсація.
@@ -292,12 +292,14 @@
           терміном дії.
     %tr
       %td.big_retreat
+        %br
         %p.bold 10. Interpretation.
         %p
           Whenever possible, each provision of this agreement shall be interpreted in such a manner as to be
           valid and effective under applicable law.  If any provision is invalid, the remaining provisions
           shall remain enforceable.
       %td.big_retreat
+        %br
         %p.bold 10. Тлумачення.
         %p
           При можливості, положення даного Контракту тлумачаться таким чином, щоб залишатися правомірними і
@@ -380,7 +382,7 @@
       %td.big_retreat
         %p.bold Faria Systems LLC.
       %td.big_retreat
-        %p.bold Paul Nikitochkin
+        %p.bold= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.short_name}"
     %tr
       %td.big_retreat
         %p 548 Market St. #40438
@@ -391,7 +393,19 @@
         %p= "#{street(@user.ua_user_field.address)},"
         %p= "#{city(@user.ua_user_field.address)}, #{zip_code(@user.ua_user_field.address)},"
         %p= "#{country(@user.ua_user_field.address)}"
-        %p (Bank Details)
+        %br
+        %br
+        %br
+        %p= "c/a № #{@user.en_user_field.c_a_number}"
+        %p= @user.en_user_field.bank_name
+        %p= "Bank Address: #{@user.ua_user_field.bank_address}"
+        %p= "Bank SWIFT Code #{@user.swift_code}"
+        %p= "IBAN #{@user.iban_number}" if @user.iban_number.present?
+        %br
+        %p= "Intermediary Bank: #{@user.intermediary_bank_name}"
+        %p= "Bank SWIFT Code: #{@user.intermediary_bank_swift_code}"
+        %br
+        %br
   .data
     %table
       %tr
@@ -419,7 +433,7 @@
           %p Printed:
           %p (Буквами)
         %td.big_retreat.width-40
-          %p= @user.en_user_field.short_name
+          %p= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.short_name}"
           %p ______________________________
       %br
       %tr

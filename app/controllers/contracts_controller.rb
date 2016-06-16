@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
   before_action :set_drafts, only: [:new, :generate]
+  before_action :set_persons_type, only: [:new, :generate]
   def new
     @contract = Contract.new
     @contract.build_en_contract_field
@@ -9,6 +10,7 @@ class ContractsController < ApplicationController
   def generate
     @contract = Contract.new(contract_params)
     @user = User.find(params[:user_id])
+    @person_type = @contract.person_type.name
     request.format = :pdf if contract_params['pdf'] == 'true'
 
     if @contract.valid?
@@ -36,6 +38,7 @@ class ContractsController < ApplicationController
   def contract_params
     params.require(:contract).permit(
       :draft_id,
+      :person_type_id,
       :pdf,
       :number,
       :start_date,
@@ -51,6 +54,10 @@ class ContractsController < ApplicationController
       :maximum_bonuses_size,
       :total_payments
     ]
+  end
+
+  def set_persons_type
+    @person_types = PersonType.pluck(:name, :id)
   end
 
   def set_drafts

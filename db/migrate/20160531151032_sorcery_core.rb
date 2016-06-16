@@ -10,6 +10,9 @@ class SorceryCore < ActiveRecord::Migration
       t.string  :swift_code
       t.string  :iban_number
       t.integer :bank_code
+      t.string  :passport_number
+      t.string  :intermediary_bank_name
+      t.string  :intermediary_bank_swift_code
       t.belongs_to :role
 
       t.timestamps

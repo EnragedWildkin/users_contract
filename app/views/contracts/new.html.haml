@@ -19,6 +19,10 @@
       .form-group.col-md-10.col-md-offset-1
         = f.label :select_draft
         = f.select(:draft_id, options_for_select(@drafts), {}, class: 'btn btn-default')
+    .row.physical-person-type
+      .form-group.col-md-10.col-md-offset-1
+        = f.label :select_person_type
+        = f.select(:person_type_id, options_for_select(@person_types), {}, class: 'btn btn-default')
     .row
       .col-md-10.col-md-offset-1
         .btn-group.btn-group-justified
@@ -28,3 +32,6 @@
             = f.submit t('new.preview'), class: 'btn btn-default preview'
           .btn-group
             = link_to t('pdf'), '#', class: 'btn btn-default generate_pdf'
+
+:javascript
+  $(function(){ new ContractNew() });
