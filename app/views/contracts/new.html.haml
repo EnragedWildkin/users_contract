@@ -1,16 +1,36 @@
-%h1= t('new.select_contract_and_person')
-.col-md-6.col-md-offset-3
-  = form_for @contract, url: { action: 'generate' }, method: :get do |f|
-    .form-group
-      = f.label :contract_number
-      = f.text_field(:number, placeholder: t('new.fields.contract_number'), class: 'form-control', required: true)
-    .form-group
-      = f.label :contract_start_date
-      = f.date_field(:start_date, class: 'form-control', required: true)
-    .form-group
-      = f.label :contract_end_date
-      = f.date_field(:end_date, class: 'form-control', required: true)
-    = f.select(:user_id, options_for_select(@users), {}, class: 'btn btn-primary')
-    = f.select(:draft_id, options_for_select(@drafts), {}, class: 'btn btn-primary')
-    = f.submit t('new.preview'), class: 'btn btn-default'
-    = f.submit t('pdf'), class: 'btn btn-default'
+%h1= t('new.select_contract')
+.col-md-4.col-md-offset-4
+  = form_for @contract, url: { action: "generate" }, method: :get do |f|
+    = render partial: 'errors', locals: { target: @contract }
+    = render partial: 'form_general_fields', locals: { f: f }
+    .consulting-fields
+      .en-group
+        %h4.text-center
+          %strong= t('fields.en.title')
+        = f.fields_for :en_contract_field do |ff|
+          = render partial: 'consulting_fields', locals: { f: ff, language: 'en' }
+      .ua-group
+        %h4.text-center
+          %strong= t('fields.ua.title')
+        = f.fields_for :ua_contract_field do |ff|
+          = render partial: 'consulting_fields', locals: { f: ff, language: 'ua' }
+    .row.draft
+      .form-group.col-md-10.col-md-offset-1
+        = f.label :select_draft
+        = f.select(:draft_id, options_for_select(@drafts), {}, class: 'btn btn-default')
+    .row.physical-person-type
+      .form-group.col-md-10.col-md-offset-1
+        = f.label :select_person_type
+        = f.select(:person_type_id, options_for_select(@person_types), {}, class: 'btn btn-default')
+    .row
+      .col-md-10.col-md-offset-1
+        .btn-group.btn-group-justified
+          .btn-group
+            = link_to t('cancel'), root_path, class: 'btn btn-default'
+          .btn-group
+            = f.submit t('new.preview'), class: 'btn btn-default preview'
+          .btn-group
+            = f.submit t('pdf'), class: 'btn btn-default'
+
+:javascript
+  $(function(){ new ContractNew() });

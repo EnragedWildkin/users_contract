@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605100307) do
+ActiveRecord::Schema.define(version: 20160616092029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contract_fields", force: :cascade do |t|
+    t.string   "customer_payment"
+    t.string   "maximum_bonuses_size"
+    t.string   "total_payments"
+    t.string   "language"
+    t.integer  "contract_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "contracts", force: :cascade do |t|
     t.string   "number"
@@ -22,11 +32,24 @@ ActiveRecord::Schema.define(version: 20160605100307) do
     t.date     "end_date"
     t.integer  "user_id"
     t.integer  "draft_id"
+    t.integer  "person_type_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "drafts", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "drafts", force: :cascade do |t|
+  create_table "person_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,17 +62,18 @@ ActiveRecord::Schema.define(version: 20160605100307) do
     t.string   "contract_price"
     t.string   "location"
     t.string   "address"
+    t.string   "passport_issued_by"
     t.string   "c_a_number"
     t.string   "bank_name"
     t.string   "bank_address"
     t.string   "language"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                                       null: false
+    t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.string   "taxpayer_id"
@@ -58,6 +82,9 @@ ActiveRecord::Schema.define(version: 20160605100307) do
     t.string   "swift_code"
     t.string   "iban_number"
     t.integer  "bank_code"
+    t.string   "passport_number"
+    t.string   "intermediary_bank_name"
+    t.string   "intermediary_bank_swift_code"
     t.integer  "role",                            default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"

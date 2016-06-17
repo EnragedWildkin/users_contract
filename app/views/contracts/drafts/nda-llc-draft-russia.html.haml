@@ -3,15 +3,15 @@
   %p.center= "Дополнение Б к договору № #{@contract.number}"
   %br
   %p.bold.center ПОЛОЖЕНИЕ О ЗАЩИТЕ ИНТЕЛЛЕКТУАЛЬНОЙ СОБСТВЕННОСТИ
-  - 2.times do
-    %br
+  %br
+  %br
   %table
     %tr
-      %td.little_retreat
+      %td.padding_top_bottom_5
         %p
           .left_text г. Львов
           .right_text= locale_date(@contract.start_date, "%d %B %Y", :ru)
-      %td.little_retreat
+      %td.padding_top_bottom_5
         %p
           .left_text Lviv
           .right_text= locale_date(@contract.start_date, "%B %d, %Y", :en)
@@ -155,7 +155,7 @@
           \- the non-traditional objects of Intellectual property including but not limited to The COMMERCIAL
           SECRET (secrets of production, know-how etc.).
     %tr
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center 2. ПРАВА И ОБЯЗАННОСТИ ЛИЦ, ИМЕЮЩИХ ДОСТУП К ОБЪЕКТАМ ИНТЕЛЛЕКТУАЛЬНОЙ СОБСТВЕННОСТИ
         %p
           2.1. ИСПОЛНИТЕЛЬ, а также другие лица, которые в установленном договором порядке получили доступ к
@@ -324,7 +324,7 @@
           %br
           При пересылке информации, составляющую коммерческую тайну ЗАКАЗЧИКА, по электронной почте она
           должна быть защищена от несанкционированного доступа паролями или криптографическими программами.
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center
           2. THE RIGHTS AND OBLIGATIONS OF THE PERSONS THAT HAVE ACCESS TO THE OBJECTS OFINTELLECTUAL
           PROPERTY
@@ -688,7 +688,7 @@
           in any other form bearing the note on or pointing out to the confidential nature of such
           information shall also be considered a COMMERCIAL SECRET.
     %tr
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center 6. МЕСТОНАХОЖДЕНИЕ, БАНКОВСКИЕ РЕКВИЗИТЫ И ПОДПИСИ СТОРОН
         %p.bold Заказчик
         %p JetThoughts LLC
@@ -698,7 +698,7 @@
         %br
         %br
         %p Директор______________________/ Nikitochkin Pavlo
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center 6. LOCATION, BANKING REQUISITES AND SIGNATURES OF THE PARTIES
         %p.bold The Company
         %p JetThoughts LLC
@@ -709,39 +709,51 @@
         %br
         %p Director_____________________/ Nikitochkin Pavlo
     %tr
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold Исполнитель
-        %p= "ФЛП #{@user.ru_user_field.full_name}"
+        %p= "#{person_type_for_locale(@person_type, :ru)} #{@user.ru_user_field.full_name}"
         %br
         %p= "Адрес: #{@user.ru_user_field.address}"
         %br
         %p= "Идентификационный номер: #{@user.taxpayer_id}"
         %br
-        %p= "Свидетельство № #{@user.register_number}"
-        %p= "От #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ru)}"
+        - if @person_type == "PE"
+          %p= "Свидетельство № #{@user.register_number}"
+          %p= "От #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ru)}"
+        - else
+          %p= "Паспорт номер: #{@user.passport_number}"
+          %p= "Выдан #{@user.ru_user_field.passport_issued_by}"
         %br
         %p= "т/с № #{@user.ru_user_field.c_a_number}"
         %p= @user.ru_user_field.bank_name
         %p= "МФО #{@user.bank_code}"
         %br
         %br
-        %p= "ФЛП________________________________/#{@user.ua_user_field.short_name}"
+        %p
+          #{person_type_for_locale(@person_type, :ru)}________________________/
+          #{@user.ru_user_field.name_with_initials}
         %br
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold The Contractor
-        %p= "PE #{@user.en_user_field.full_name}"
+        %p= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.full_name}"
         %br
         %p= "Address: #{@user.en_user_field.address}"
         %br
         %p= "Taxpayer ID: #{@user.taxpayer_id}"
         %br
-        %p= "Register № #{@user.register_number}"
-        %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - if @person_type == "PE"
+          %p= "Register № #{@user.register_number}"
+          %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - else
+          %p= "Passport number: #{@user.passport_number}"
+          %p= "Issued by #{@user.en_user_field.passport_issued_by}"
         %br
         %p= "c/a № #{@user.en_user_field.c_a_number}"
         %p= @user.en_user_field.bank_name
         %p= "Bank Code #{@user.bank_code}"
         %br
         %br
-        %p= "PE_________________________________/#{@user.en_user_field.short_name}"
+        %p
+          #{person_type_for_locale(@person_type, :en)}________________________/
+          #{@user.en_user_field.short_name}
         %br

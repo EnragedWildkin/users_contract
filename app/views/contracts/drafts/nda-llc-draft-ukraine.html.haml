@@ -3,15 +3,15 @@
   %p.center= "Додаток Б до договору № #{@contract.number}"
   %br
   %p.bold.center Положення про захист інтелектуальної власності.
-  - 2.times do
-    %br
+  %br
+  %br
   %table
     %tr
-      %td.little_retreat
+      %td.padding_top_bottom_5
         %p
           .left_text м. Львів
           .right_text= locale_date(@contract.start_date, "%d %B %Y", :ua)
-      %td.little_retreat
+      %td.padding_top_bottom_5
         %p
           .left_text Lviv
           .right_text= locale_date(@contract.start_date, "%B %d, %Y", :en)
@@ -154,7 +154,7 @@
           \- the non-traditional objects of Intellectual property including but not limited to The COMMERCIAL
           SECRET (secrets of production, know-how etc.).
     %tr
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center 2. ПРАВА ТА ОБОВ’ЯЗКИ ОСІБ, ЩО МАЮТЬ ДОСТУП ДО ОБ’ЄКТІВ ІНТЕЛЕКТУАЛЬНОЇ ВЛАСНОСТІ
         %p
           2.1.  ВИКОНАВЕЦЬ, а також інші особи, які у встановленому ДОГОВОРОМ порядку отримали доступ до
@@ -317,7 +317,7 @@
           %br
           При пересиланні інформації, що становить КОМЕРЦІЙНУ ТАЄМНИЦЮ ЗАМОВНИКА, електронною поштою вона
           повинна бути захищеною від несанкціонованого доступу паролями або криптографічними програмами.
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center
           2. THE RIGHTS AND OBLIGATIONS OF THE PERSONS THAT HAVE ACCESS TO THE OBJECTS OFINTELLECTUAL
           PROPERTY
@@ -680,7 +680,7 @@
           in any other form bearing the note on or pointing out to the confidential nature of such
           information shall also be considered a COMMERCIAL SECRET.
     %tr
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center 6. МІСЦЕЗНАХОДЖЕННЯ, БАНКІВСЬКІ РЕКВІЗИТИ ТА ПІДПИСИ СТОРІН
         %p.bold Замовник
         %p JetThoughts LLC
@@ -690,7 +690,7 @@
         %br
         %br
         %p Директор______________________/ Nikitochkin Pavlo
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold.center 6. LOCATION, BANKING REQUISITES AND SIGNATURES OF THE PARTIES
         %p.bold The Company
         %p JetThoughts LLC
@@ -701,16 +701,20 @@
         %br
         %p Director_____________________/ Nikitochkin Pavlo
     %tr
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold Виконавець
-        %p= "ФОП #{@user.ua_user_field.full_name}"
+        %p= "#{person_type_for_locale(@person_type, :ua)} #{@user.ua_user_field.full_name}"
         %br
         %p= "Адреса: #{@user.ua_user_field.address}"
         %br
         %p= "Ідентифікаційний номер: #{@user.taxpayer_id}"
         %br
-        %p= "Свідоцтво № #{@user.register_number}"
-        %p= "Від #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ua)}"
+        - if @person_type == "PE"
+          %p= "Свідоцтво № #{@user.register_number}"
+          %p= "Від #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ua)}"
+        - else
+          %p= "Паспорт номер: #{@user.passport_number}"
+          %p= "Виданий #{@user.ua_user_field.passport_issued_by}"
         %br
         %p= "п/р № #{@user.ua_user_field.c_a_number}"
         %p= @user.ua_user_field.bank_name
@@ -719,18 +723,24 @@
         %p= "IBAN #{@user.iban_number}"
         %br
         %br
-        %p= "ФОП________________________________/#{@user.ua_user_field.short_name}"
+        %p
+          #{person_type_for_locale(@person_type, :ua)}_____________________/
+          #{@user.ua_user_field.name_with_initials}
         %br
-      %td.big_retreat
+      %td.padding_top_11
         %p.bold The Contractor
-        %p= "PE #{@user.en_user_field.full_name}"
+        %p= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.full_name}"
         %br
         %p= "Address: #{@user.en_user_field.address}"
         %br
         %p= "Taxpayer ID: #{@user.taxpayer_id}"
         %br
-        %p= "Register № #{@user.register_number}"
-        %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - if @person_type == "PE"
+          %p= "Register № #{@user.register_number}"
+          %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - else
+          %p= "Passport number: #{@user.passport_number}"
+          %p= "Issued by #{@user.en_user_field.passport_issued_by}"
         %br
         %p= "c/a № #{@user.en_user_field.c_a_number}"
         %p= @user.en_user_field.bank_name
@@ -739,5 +749,7 @@
         %p= "IBAN #{@user.iban_number}"
         %br
         %br
-        %p= "PE_________________________________/#{@user.en_user_field.short_name}"
+        %p
+          #{person_type_for_locale(@person_type, :en)}_____________________/
+          #{@user.en_user_field.short_name}"
         %br

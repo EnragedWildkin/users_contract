@@ -1,30 +1,32 @@
-$ ->
-# Set contract_pdf field to true if press button "Generate PDF"
-  $('.generate_pdf').click (e)->
-    e.preventDefault()
-    $('#contract_pdf').val 'true'
-    $('form').submit()
-  $('.preview').click ->
-    $('#contract_pdf').val 'false'
+class @ContractNew
+  constructor: ->
+    initFunc()
+
+initFunc = ->
+  initVariables()
+  hideEndDate()
+  showConsultingFields()
+  $('#contract_draft_id').change ->
+    showConsultingFields()
+
+initVariables = ->
+  @.consulting_draft = 'Consulting-Services-draft'
+  @.fields_without_end_date = [
+    'NDA-LLC-draft-Ukraine',
+    'NDA-LLC-draft_Russia'
+  ]
 
 # Don't show end_date field on NDA templates
-  hide_fields = ['3','4']
+hideEndDate = ->
   $('#contract_draft_id').change ->
-    if $.inArray($('#contract_draft_id').val(), hide_fields) >= 0
-      $('#contract_end_date').val ''
-      $('#contract_end_date').attr('required', false)
-      $('.contract_end_date').hide('slow')
+    if $.inArray($('#contract_draft_id').find('option:selected').text(), fields_without_end_date) >= 0
+      $('.contract-end-date').hide('slow')
     else
-      $('.contract_end_date').show('slow')
-      $('#contract_end_date').attr('required', true)
+      $('.contract-end-date').show('slow')
 
-# Edit user chosen in the select tag(#contract_user_id)
-class window.AdminEditUser
-  constructor: ->
-    url =  '/users/' + $('#contract_user_id').val() + '/edit'
-    $('.edit').attr('href', url)
-    $('#contract_user_id').change ->
-      url = '/users/' + $(this).val() + '/edit'
-      if url
-        $('.edit').attr 'href', url
-      false
+# Show Consulting-Services-draft fields when generate it
+showConsultingFields = ->
+  if $('#contract_draft_id').find('option:selected').text() == consulting_draft
+    $('.consulting-fields').show('slow')
+  else
+    $('.consulting-fields').hide('slow')
