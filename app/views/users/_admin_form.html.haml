@@ -1,0 +1,18 @@
+.panel-body
+  .col-md-6.col-md-offset-3
+    = form_for @user do |f|
+      = render partial: 'shared/errors', locals: { target: @user }
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control', required: true
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+      .row
+        .col-md-6
+          = link_to t('back'), root_path, class: 'btn btn-primary btn-lg'
+        .col-md-6
+          = f.submit t('save'), class: 'pull-right btn btn-primary btn-lg'

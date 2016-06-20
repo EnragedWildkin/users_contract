@@ -1,4 +1,55 @@
+
+/* Headers and footers for NDA LLC drafts */
+div.nda_llc_contract {
+  page: nda_llc_contract;
+  page-break-before: right;
+  prince-page-group: start;
+}
+@page nda_llc_contract {
+  @top {
+    margin-bottom: 11pt;
+    font-family: 'Times New Roman';
+    font-size: 11pt;
+    content: "The regulation on protection of intellectual property";
+    vertical-align: bottom;
+  }
+  @bottom-left {
+    border-bottom: solid black thin;
+    margin-top: 20pt;
+    margin-bottom: 60pt;
+    font-family: Verdana;
+    font-size: 8pt;
+    content: " Copyright 2016 JETTHOUGHTS / Confidential / Unauthorized use and disclosure strictly
+    forbidden"
+  }
+  @bottom-right {
+    border-bottom: solid black thin;
+    margin-top: 20pt;
+    margin-bottom: 60pt;
+    font-family: Verdana;
+    font-size: 8pt;
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+/* Styles for all pages */
+@page body {
+  border-bottom: thin black solid;
+}
+@page {
+  margin-left: 40pt;
+  margin-right: 25pt;
+  margin-top: 60pt;
+  margin-bottom: 70pt;
+}
+body {
+  font-family: 'Times New Roman';
+  font-size: 11pt;
+  text-align: justify;
+}
 table {
+  border-collapse: collapse;
+  border: 1px solid #000;
   table-layout: fixed;
 }
 table td {
@@ -6,32 +57,81 @@ table td {
   width: 50%;
   padding: 0px 10px 0px 10px;
 }
-
-h4.subtitle {
-  text-align: center;
-  margin-bottom: 0px;
+table td:first-child {
+  border-right: 1px solid #000;
 }
-p.subtitle {
-  text-align: center;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 10pt;
+table td:last-child {
+  border-left: 1px solid #000;
 }
 p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* Styles for SOR_LLC drafts */
+.sor_llc_contract p {
   font-size: 10pt;
-  text-align: justify;
+}
+
+.sor_llc_contract table {
+  border: none;
+}
+.sor_llc_contract table td {
+  border: none;
+}
+
+/* General styles for text */
+.left_text {
+  float: left;
+  border:none;
+}
+.right_text {
+  float: right;
+  border:none;
+}
+.bold {
+  font-weight: bold;
+}
+.center {
+  text-align: center;
 }
 .underline {
   text-decoration: underline;
 }
-h4, h5, p {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-.padding_top_20 {
+.title_1 {
   padding-top: 20px;
+  padding-bottom: 20px;
+}
+.padding_top_11 {
+  padding-top: 11px;
 }
 .padding_top_bottom_5 {
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+/* Styles for Consulting-Services drafts */
+.consulting_services p {
+  font-size: 10pt;
+}
+.consulting_services table {
+  border: none;
+}
+.consulting_services table td {
+  border: none;
+}
+.consulting_services .data table {
+  width: 100%;
+}
+.consulting_services .data table td {
+  padding: 15px 20px 0px 20px;
+}
+.consulting_services .width-10 {
+  width: 10%;
+}
+.consulting_services .width-40 {
+  width: 40%;
+}
+.consulting_services .left_padding_50 {
+  padding-left: 50px;
 }

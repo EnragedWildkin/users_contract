@@ -1,0 +1,466 @@
+.consulting_services
+  %p.bold.center SOFTWARE DEVELOPMENT
+  %p.bold.center AND CONSULTING AGREEMENT
+  %br
+  %p.bold.center CONTRACT №. #{@contract.number}
+  %p.bold.center КОНТРАКТ №. #{@contract.number}
+  %br
+  %br
+  %table
+    %tr
+      %td.padding_top_11
+        %p Between:
+        .left_padding_50
+          %p Faria Systems LLC.
+          %p 548 Market St. #40438
+          %p San Francisco, CA 94104
+          %p USA
+          %p Managing Member: Theodore King
+        %p and:
+        .left_padding_50
+          %p= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.short_name}"
+          %p
+            #{street(@user.en_user_field.address)},
+            #{city(@user.en_user_field.address)},
+            #{zip_code(@user.en_user_field.address)},
+          %p= country(@user.en_user_field.address)
+      %td.padding_top_11
+        %p Між:
+        .left_padding_50
+          %p Faria Systems LLC.
+          %p 548 Market St. #40438
+          %p San Francisco, CA 94104
+          %p USA
+          %p Директор: Теодор Кінг
+        %p та:
+        .left_padding_50
+          %p= "#{person_type_for_locale(@person_type, :ua)} #{@user.ua_user_field.full_name}"
+          %p
+            #{street(@user.ua_user_field.address)},
+            #{city(@user.ua_user_field.address)},
+            #{zip_code(@user.ua_user_field.address)},
+          %p= country(@user.ua_user_field.address)
+    %tr
+      %td.padding_top_11
+        %br
+        %br
+        %br
+        %p= locale_date(@contract.start_date, "%B %d, %Y", :en)
+        %br
+        %br
+        %br
+      %td.padding_top_11
+        %br
+        %br
+        %br
+        %p= locale_date(@contract.start_date, "%d %B %Y", :ua)
+        %br
+        %br
+        %br
+    %tr
+      %td.padding_top_11
+        %p
+          Faria Systems LLC. (“Customer”), a Delaware corporation, wishes to obtain the services of
+          #{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.short_name}, under the
+          jurisdiction of Ukraine (“Consultant”), who in turn wishes to provide, consulting services
+          according to the following terms:
+      %td.padding_top_11
+        %p
+          Faria Systems LLC., компанія з обмеженою відповідальністю зареєстрована у США, штат Делавер
+          (“Замовник”), доручає, а #{person_type_for_locale(@person_type, :ua)}
+          #{@user.ua_user_field.short_name}, зареєстрований на підставі законодавства України
+          (“Консультант”), надає консультаційні послуги на наступних умовах:
+    %tr
+      %td.padding_top_11
+        %p.bold 1. Consulting Services.
+        %p
+          As requested by the Customer and agreed to by Consultant, from time to time in writing, Slack or
+          email, Consultant shall provide software development consulting services according to the terms of
+          this agreement and request by the Customer. If Customer wishes to obtain services on any other
+          basis or terms, a separate agreement must be signed by the parties.
+      %td.padding_top_11
+        %p.bold 1. Консультаційні послуги.
+        %p
+          Згідно з запитаннями Замовника узгодженими з Консультантом, в письмовому або електронному вигляді
+          Консультант надає консультаційні послуги з питань розробки програмного забезпечення на умовах
+          описаних в даному контракті та відповідному завданні Замовника. Для отримання послуг на інших
+          умовах або отримання інших послуг необхідно укласти окремий договір.
+    %tr
+      %td.padding_top_11
+        %p.bold 2. Changes in Plans.
+        %p
+          The Consultant shall not be penalized for damages caused by deadline or cost overruns; neither
+          shall overruns entail any increase in cost for the Customer. Changes and alterations (minor
+          changes) to the schedule / agreed tasks should be requested in writing by the Customer.
+      %td.padding_top_11
+        %p.bold 2. Коректування планів.
+        %p
+          До Консультанта не можуть застосовуватися штрафні санкції у разі перевищення бюджету або термінів
+          виконання проекту. Такі перевищення не призводять до збільшення вартості проекту. Невеликі зміни в
+          плані проекту здійснюються на підставі  письмового  узгодження  з Замовником.
+    %tr
+      %td.padding_top_11
+        %p.bold 3. Compensation.
+        %p
+          Customer will pay US$#{@contract.en_contract_field.customer_payment} per month for services
+          provided by Consultant under this agreement. Additionally, Consultant will be eligible to be
+          considered for an annual incentive bonus each fiscal year based upon the achievement of certain
+          objective or subjective criteria established by the Customer of up to
+          US$#{@contract.en_contract_field.maximum_bonuses_size}. The determinations of the Customer with
+          respect to such bonus shall be final and binding.
+      %td.padding_top_11
+        %p.bold 3. Компенсація.
+        %p
+          Замовник оплачує послуги, надані Консультантом на умовах даного Контракту у розмірі
+          #{@contract.ua_contract_field.customer_payment} доларів США за місяць. Крім того Консультант має
+          право на отримання  щорічної заохочувальної премії, виходячи з досягнення певних об’єктивних або
+          суб'єктивних критеріїв, встановлених Замовником. Максимальний розмір премії складає
+          #{@contract.ua_contract_field.maximum_bonuses_size} доларів США. Рішення Замовника щодо виплати
+          премії є кінцевим і обов’язковим.
+    %tr
+      %td.padding_top_11
+        %p.bold 4. Payment.
+        %p
+          Consultant shall invoice Customer on the first day of each month for services performed and
+          expenses incurred. Within 30 days after services are provided, Customer shall pay Consultant for
+          invoiced services. Payments will be made in USD currency. Sum total paid by Customer for services
+          under this contract shall not exceed US$#{@contract.en_contract_field.total_payments} excluding
+          any additional amounts from the annual incentive bonus.
+      %td.padding_top_11
+        %p.bold 4. Оплата.
+        %p
+          Консультант виставляє рахунок Замовнику першого числа кожного місяця. На протязі 30 днів після
+          виконання послуг Замовник оплачує виставлений рахунок. Оплата здійснюється у доларах США (USD).
+          Загальна сума виплат по контракту не може перевищувати
+          #{@contract.ua_contract_field.total_payments} доларів США без урахування додаткових річних
+          заохочувальних премій.
+    %tr
+      %td.padding_top_11
+        %p.bold 5. Warranties and Limitations.
+        %p
+          (a) Except for material provided by Customer to Consultant for incorporation into work product,
+          Consultant warrants that it will have the appropriate right, title, and interest to the software
+          tools used, and the work product will not infringe any rights of third parties due to such
+          software.
+        %p
+          (b) Consultant will use reasonable efforts to attempt to correct any reported design or other
+          errors as a service to be provided under this contract.
+        %p
+          (c) Consultant agrees to comply with all applicable privacy laws and the Customer’s security and
+          deployment policy.
+      %td.padding_top_11
+        %p.bold 5. Гарантії та обмеження.
+        %p
+          (a) За вийнятком матеріалів наданих Консультанту Замовником для використання в процесі роботи
+          Консультант гарантує, що володіє усіма необхідними правами на матеріали та програмне забезпечення
+          котре використовується в процесі роботи і що кінцевий продукт (результат наданих Замовнику послуг)
+          не порушує жодних прав чи патентів третіх сторін.
+        %p
+          (b) Консультант зобов’язується прикласти розумних зусиль для виправлення помічених помилок в
+          специфікаціях чи інших помилок у якості послуги на умовах даного Контракту.
+        %p
+          (c) Консультант згоден дотримуватися усіх законів про конфіденційність та встановлених у Замовника
+          політик безпеки та розгортання.
+    %tr
+      %td.padding_top_11
+        %p.bold 6. Transfer of Ownership.
+        %p
+          6.1 Consultant transfer to the Customer all exclusive proprietary rights on intellectual property
+          created by the Consultant as a result of the providing Services under this Contract:
+        %p
+          6.1.1 exclusive right to independently use objects of intellectual property.
+        %p
+          6.1.2 exclusive right to prohibit third parties to use objects of intellectual property
+        %p
+          6.1.3 exclusive right to permit the use of objects of intellectual property to third parties.
+        %p
+          6.2 The rights specified in Art. 6.1 of Contract transferring to the Customer the entire duration
+          of copyrights, specified by Customer's state acting legislation, without the territorial limits of
+          their implementation.
+        %p
+          6.3 The rights specified in Art. 6.1 of Contract and providing of Services transferring to the
+          Customer simultaneously.
+        %p
+          6.4 Customer shall not stipulate the Consultant as an author or coauthor of objects of
+          intellectual property transferred to the Customer as a result of providing the Services under the
+          Contract.
+        %p
+          6.5 Consultant agrees that if fact of transfer of property rights defined by this Contract will be
+          insufficient to ensure Customer rights on objects of intellectual property, Consultant shall
+          facilitate to Customer to provide confirmation or otherwise prove the rights of Customer on
+          objects of intellectual property created as a result of providing the Services under this
+          Contract. Consultant proofs may include: providing Customer with additional information and data
+          on objects of intellectual property created a result of execution of Contract, registration of
+          applications, technical descriptions, testation, an assignment and any other documents which the
+          Parties may deem necessary to ensure Customer rights on objects of intellectual property.
+      %td.padding_top_11
+        %p.bold 6. Передача прав на інтелектуальну власність.
+        %p
+          6.1. Консультант передає Замовникові всі виключні майнові права на об'єкти інтелектуальної
+          власності, створені Консультантом за результатами надання Послуг у рамках цього Контракту:
+        %p
+          6.1.1. виключне право самостійно використовувати об'єкти інтелектуальної власності.
+        %p
+          6.1.2. виключне право забороняти третім особам використання об'єктів інтелектуальної власності.
+        %p
+          6.1.3. виключне право дозволяти використання об'єктів інтелектуальної власності третім особам.
+        %p
+          6.2. Права, зазначені у п.6.1 цього Контракту, передаються Замовникові на весь термін дії
+          авторських прав, встановлений чинним законодавством країни Замовника, без територіального
+          обмеження їх реалізації.
+        %p
+          6.3. Права, зазначені у п.6.1. цього Договору, передаються Замовнику одночасно з наданням Послуг.
+        %p
+          6.4. Замовник, не зазначає Консультанта в якості автора або співавтора об’єктів інтелектуальної
+          власності, які передані Замовникові за результатами надання Послуг за Контрактом.
+        %p
+          6.5. Консультант погоджується з тим, що у разі, якщо факт надання майнових прав, визначених даним
+          Контрактом, виявляться недостатніми для забезпечення прав Замовника на об’єкти інтелектуальної
+          власності, Консультант сприятиме Замовнику, за його рахунок, в наданні або підтвердженні іншим
+          чином прав Замовника на об’єкти інтелектуальної власності створені в результаті надання Послуг за
+          даним Контрактом. Дії Консультанта, які випливають з цього пункту можуть включати: надання
+          Замовникові додаткової інформації та даних щодо об’єктів інтелектуальної власності створених в
+          результаті виконання цього Контракту; оформлення заяв, технічних описів, текстів свідчень,
+          документів про передачу прав і будь-яких інших документів, які Сторони вважатимуть необхідними для
+          набуття і реєстрації на ім’я Замовника таких прав.
+    %tr
+      %td.padding_top_11
+        %p.bold 7. Confidential Information.
+        %p
+          Consultant agrees that it will not, directly or indirectly, disclose to or make available for use
+          by anyone other than Customer during the term of this agreement and in perpetuity following its
+          termination, any information marked confidential or identified to Consultant personnel as
+          confidential, unless the same shall have first become generally known and published through no
+          fault of Consultant or shall have been already known to Consultant. Consultant further agrees not
+          to disclose at any time, unless compelled to by legal proceedings, any project documentation or
+          other work product produced without the express written consent of Customer.
+        %p
+          The Consultant must not provide any demonstration (offline or online) or installation of the
+          product or parts of it to other parties. Neither should the Consultant write, produce or
+          distribute articles (weblog entries, articles, etc.) or screencasts regarding the project without
+          written permission of the customer.
+      %td.padding_top_11
+        %p.bold 7. Угода про конфіденційність.
+        %p
+          Консультант зобов'язується, під час дії контракту і на необмежений термін після його завершення,
+          не розголошувати або робити доступною для будь-кого, за винятком Замовника будь-яку інформацію, що
+          має позначку про конфіденційність або зазначену для Консультанта як ту що має ознаки
+          конфіденційної, за винятком випадків коли ця інформація стала публічно доступною не з вини
+          Консультанта або вже була відома Консультанту. Крім того, Консультант зобов'язується не
+          розголошувати ніколи, за винятком визначених законом випадків, будь-яку проектну документацію або
+          інші результати роботи без попереднього письмового дозволу Замовника.
+        %p
+          Консультант не може надавати демонстрацію або інсталяцію продукту або його частин третій стороні
+          сторонам. Консультант не має права створювати та публікувати інформацію про продукт без
+          попереднього письмового дозволу Замовника.
+    %tr
+      %td.padding_top_11
+        %p.bold 8. Outside Activities.
+        %p
+          While rendering services to the Customer, Consultant shall not to assist any person or entity in
+          competing with the Customer, in preparing to compete with the Customer or in hiring any employees
+          or consultants of the Customer.
+      %td.padding_top_11
+        %p.bold 8. Стороння діяльність.
+        %p
+          Під час надання послуг Замовнику Консультант зобов'язується не брати участь в будь якій роботі за
+          наймом, консультаційній або іншої господарській діяльності без письмової згоди Замовника. Крім
+          того, під час надання послуг компанії Консультант не будете надавати жодним конкуруючим із
+          Замовником особам або організаціям допомогу в підготовці до конкуренції з Замовником і в наймі
+          будь-яких працівників або консультантів Замовника.
+    %tr
+      %td.padding_top_11
+        %p.bold 9. Legal Relationship.
+        %p
+          Except to the extent specifically required under the terms of this agreement, Consultant shall not
+          be deemed an agent or employee of Customer and may not represent itself as having any authority to
+          act on behalf of Customer without Customer's prior written consent. This agreement shall not be
+          interpreted as establishing anything other than a consultant relationship and no partnership,
+          employer/employee, joint venture, agency, or other arrangement shall be inferred.
+        %p
+          This contract expires #{locale_date(@contract.end_date, "%B %d, %Y", :en)}. The Customer shall
+          have the option of renewing this agreement on the same terms and duration upon expiration.
+      %td.padding_top_11
+        %p.bold 9. Правові відносини.
+        %p
+          За винятком обмежень, явно визначених даними контрактом, Консультант не може вважатися
+          представником або працівником Замовника і не може виступати від імені Замовника без попереднього
+          письмового дозволу від Замовника. Цей договір не встановлює жодних відносин крім консультаційних і
+          ніякі інші угоди (як-то: про партнерство, трудові, спільне підприємство, агентство тощо) не
+          вважаються дійсними.
+        %p
+          Термін дії цього Контракту закінчується #{locale_date(@contract.end_date, "%d %B %Y", :ua)} року.
+          Після закінчення терміну дії Замовник може продовжити цей договір на тих же умовах і з таким же
+          терміном дії.
+    %tr
+      %td.padding_top_11
+        %br
+        %p.bold 10. Interpretation.
+        %p
+          Whenever possible, each provision of this agreement shall be interpreted in such a manner as to be
+          valid and effective under applicable law.  If any provision is invalid, the remaining provisions
+          shall remain enforceable.
+      %td.padding_top_11
+        %br
+        %p.bold 10. Тлумачення.
+        %p
+          При можливості, положення даного Контракту тлумачаться таким чином, щоб залишатися правомірними і
+          мають силу по відношенню до відповідного закону. Якщо будь-яке з положень буде визнано як таке що
+          не має законної сили, інші положення залишаються в силі.
+    %tr
+      %td.padding_top_11
+        %p.bold 11. Entire Agreement; Waiver.
+        %p
+          This agreement contains the entire understanding of the parties with respect to its subject
+          matter.  All prior commitments and understandings are merged herein.  All other documents, whether
+          signed or unsigned, including purchase orders, shall not be given any effect which is inconsistent
+          with this contract unless this provision is specifically referred to and waived by Consultant or
+          the Customer in writing.
+      %td.padding_top_11
+        %p.bold 11. Цілістність Контракту; Відмова від прав.
+        %p
+          Даний договір описує взаємовідносини сторін в повному обсязі. Всі попередні домовленості і угоди
+          враховані в даному контракті. Будь-які інші документи, як підписані так і без підписів, включаючи
+          замовлення на поставку, не можуть мати наслідків не сумісних з даними Контрактом за винятком, коли
+          таке положення явно згадується і підтверджено в письмовому вигляді Консультантом чи Замовником.
+    %tr
+      %td.padding_top_11
+        %p.bold 12. Controlling Law and Arbitration.
+        %p
+          This agreement shall be interpreted and enforced in accordance with the laws of the state of
+          Delaware.  The parties agree that no action by one party against the other may be brought in any
+          court, in any jurisdiction, except according to the terms of this paragraph.  The parties agree to
+          venue and jurisdiction Delaware.  No termination or expiration of this agreement shall affect the
+          right to arbitrate disputes.
+      %td.padding_top_11
+        %p.bold 12. Право та арбітраж.
+        %p
+          Даний договір інтерпретується і виконується у відповідності із законодавством штату Делавер, США.
+          Сторони погоджуються, що ніякі судові дії проти іншої сторони не можуть бути зроблені в судах та
+          юрисдикціях інших, окрім зазначених в умовах даного розділу. Сторони погоджуються з вибором штату
+          Делавер (США) в якості судового округу. Закінчення або припинення дії даної угоди не може вплинути
+          на право проведення арбітражного спору.
+    %tr
+      %td.padding_top_11
+        %p.bold 13. Force Majeure.
+        %p
+          Neither party will be liable to the other by reason of any failure in performance of this
+          Agreement if the failure arises out of the unavailability of communications facilities or energy
+          sources, acts of the other party, acts of governmental authority, fires, strikes, delays in
+          transportation, riots or war, or any causes beyond the reasonable control of that party. These
+          circumstances do only apply, if the situation is drastically unusual.
+      %td.padding_top_11
+        %p.bold 13. Форс-мажор.
+        %p
+          Жодна зі сторін не буде нести відповідальність по відношенню до іншої сторони за невиконання умов
+          даного контракту, у разі якщо таке невиконання є наслідком відсутності засобів комунікації, джерел
+          енергії, дії третьої сторони, дії урядових органів, пожеж, страйків, транспортних затримок,
+          масових заворушень, війни, або інших причин, що виходять за рамки розумного контролю відповідної
+          сторони.
+    %tr
+      %td.padding_top_11
+        %p.bold 14. Miscellaneous.
+        %p
+          All changes and additions to this Agreement are drawn up as separate appendixes and will be its
+          integral parts if signed by both parties.
+        %p
+          Facsimile (autotype) copies and copies sent by e-mail of the Contract or deed of performed work
+          equate to originals.
+        %p
+          This contract is bi-lingual, English-Ukrainian. Shall any inconsistencies or disputes arise,
+          English text takes precedence over Ukrainian.
+      %td.padding_top_11
+        %p.bold 14. Інші умови.
+        %p
+          Всі зміни та доповнення до даного Контракту оформляються окремими додатками й будуть його
+          невід'ємними частинами, якщо вони підписані обома сторонами.
+        %p
+          Факсимільні або надіслані електронною поштою копії Контракту чи Актів виконаних робіт
+          прирівнюються до оригіналів.
+        %p
+          Цей контракт укладено двома мовами, англійською та українською. У разі виникнення суперечок
+          перевага надається англійській версії.
+    %tr
+      %td.padding_top_11
+        %p.bold Faria Systems LLC.
+      %td.padding_top_11
+        %p.bold= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.short_name}"
+    %tr
+      %td.padding_top_11
+        %p 548 Market St. #40438
+        %p San Francisco, CA 94104
+        %p USA
+        %p ATTN: Theodore King
+      %td.padding_top_11
+        %p= "#{street(@user.en_user_field.address)},"
+        %p= "#{city(@user.en_user_field.address)}, #{zip_code(@user.ua_user_field.address)},"
+        %p= "#{country(@user.en_user_field.address)}"
+        %br
+        %br
+        %br
+        %p= "Account ##{@user.en_user_field.c_a_number}"
+        %p= "Bank Name: @user.en_user_field.bank_name"
+        %p= "Bank Address: #{@user.ua_user_field.bank_address}"
+        %p= "Bank SWIFT Code: #{@user.swift_code}"
+        %p= "IBAN: #{@user.iban_number}" if @user.iban_number.present?
+        %br
+        %p Intermediary Bank:
+        %p= "Bank Nam: #{@user.intermediary_bank_name}"
+        %p= "Bank SWIFT Code: #{@user.intermediary_bank_swift_code}"
+        %br
+  .data
+    %table
+      %tr
+        %td.padding_top_11.width-10
+          %p By:
+          %p (Ким)
+        %td.padding_top_11.width-40
+          %br
+          %p ______________________________
+        %td.padding_top_11.width-10
+          %p By:
+          %p (Ким)
+        %td.padding_top_11.width-40
+          %br
+          %p ______________________________
+      %br
+      %tr
+        %td.padding_top_11.width-10
+          %p Printed:
+          %p (Буквами)
+        %td.padding_top_11.width-40
+          %p Theodore King
+          %p ______________________________
+        %td.padding_top_11.width-10
+          %p Printed:
+          %p (Буквами)
+        %td.padding_top_11.width-40
+          %p= "#{person_type_for_locale(@person_type, :en)} #{@user.en_user_field.short_name}"
+          %p ______________________________
+      %br
+      %tr
+        %td.padding_top_11.width-10
+          %p Title:
+          %p (Посада)
+        %td.padding_top_11.width-40
+          %p Managing Member
+          %p ______________________________
+        %td.padding_top_11.width-10
+          %p Title:
+          %p (Посада)
+        %td.padding_top_11.width-40
+          %p Consultant
+          %p ______________________________
+      %tr
+        %td.padding_top_11.width-10
+          %p Date:
+          %p (Дата)
+        %td.padding_top_11.width-40
+          %p= locale_date(@contract.start_date, "%B %d, %Y", :en)
+          %p ______________________________
+        %td.padding_top_11.width-10
+          %p Date:
+          %p (Дата)
+        %td.padding_top_11.width-40
+          %p= locale_date(@contract.start_date, "%B %d, %Y", :en)
+          %p ______________________________

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, only: [:index, :new, :create]
+  before_action :check_permissions
+  skip_before_action :require_login, only: [:new, :create]
 
   def index
-    @users = User.all
+    @users = User.registered
   end
 
   def show
@@ -17,45 +18,41 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @edit_admin = @user.admin?
   end
 
   def create
     @user = User.new(user_params)
+    @user.skip_email_and_password_validation if admin?
 
-    respond_to do |format|
-      if @user.save
-        login(params[:user][:email], params[:user][:password])
+    if @user.save
+      login(params[:user][:email], params[:user][:password])
 
-        format.html { redirect_to :users, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+      redirect_to root_path, notice: 'User was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      redirect_to root_path, notice: 'User was successfully updated.'
+    else
+      @edit_admin = @user.admin? if admin?
+      render :edit
     end
   end
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to root_path, notice: 'User was successfully destroyed.'
   end
 
   private
+  def admin?
+    current_user && current_user.admin?
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
@@ -71,39 +68,36 @@ class UsersController < ApplicationController
       :swift_code,
       :iban_number,
       :bank_code,
-      en_user_field_attributes: [
-        :first_name,
-        :last_name,
-        :middle_name,
-        :contract_price,
-        :location,
-        :address,
-        :c_a_number,
-        :bank_name,
-        :bank_address
-      ],
-      ua_user_field_attributes: [
-        :first_name,
-        :last_name,
-        :middle_name,
-        :contract_price,
-        :location,
-        :address,
-        :c_a_number,
-        :bank_name,
-        :bank_address
-      ],
-      ru_user_field_attributes: [
-        :first_name,
-        :last_name,
-        :middle_name,
-        :contract_price,
-        :location,
-        :address,
-        :c_a_number,
-        :bank_name,
-        :bank_address
-      ]
+      :passport_number,
+      :intermediary_bank_name,
+      :intermediary_bank_swift_code,
+      en_user_field_attributes: user_field_attributes,
+      ua_user_field_attributes: user_field_attributes,
+      ru_user_field_attributes: user_field_attributes
     )
+  end
+
+  def user_field_attributes
+    [
+      :first_name,
+      :last_name,
+      :middle_name,
+      :contract_price,
+      :location,
+      :address,
+      :passport_issued_by,
+      :c_a_number,
+      :bank_name,
+      :bank_address
+    ]
+  end
+
+  def check_permissions
+    unless @user == current_user || current_user.admin?
+      flash[:alert] = 'Permission denied'
+      redirect_to user_path(current_user)
+    else
+      return true
+    end
   end
 end

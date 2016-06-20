@@ -8,7 +8,7 @@ class CreateUserFields < ActiveRecord::Migration
       t.string  :contract_price
       t.string  :location
       t.string  :address
-
+      t.string  :passport_issued_by
       t.string  :c_a_number
       t.string  :bank_name
       t.string  :bank_address

@@ -1,15 +1,18 @@
 class SorceryCore < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string  :email,            :null => false
+      t.string  :email
       t.string  :crypted_password
       t.string  :salt
-      t.integer :taxpayer_id
-      t.integer :register_number
+      t.string  :taxpayer_id
+      t.string  :register_number
       t.date    :register_number_start_date
       t.string  :swift_code
-      t.integer :iban_number
+      t.string  :iban_number
       t.integer :bank_code
+      t.string  :passport_number
+      t.string  :intermediary_bank_name
+      t.string  :intermediary_bank_swift_code
       t.integer :role, default: 0, null: false
 
       t.timestamps

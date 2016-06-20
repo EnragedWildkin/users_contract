@@ -1,10 +1,12 @@
-%table.table.table-hover
-  %thead
-    %tr
-      %th= t('fields.general.description')
-      %th= t('fields.general.english')
-      %th= t('fields.general.ukraunian')
-      %th= t('fields.general.russian')
-  %tbody
-    = render partial: 'show_general_fields', object: @user
-    = render partial: 'show_different_languages_fields', object: @user
+.show-action
+  %h1= @user.en_user_field.full_name
+  %table.table.table-hover
+    %thead
+      %tr
+        %th= t('fields.general.description')
+        %th= t('fields.general.english')
+        %th= t('fields.general.ukraunian')
+        %th= t('fields.general.russian')
+    %tbody
+      = render partial: 'show_general_fields', object: @user
+      = render partial: 'show_different_languages_fields', object: @user

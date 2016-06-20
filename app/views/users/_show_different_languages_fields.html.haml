@@ -29,6 +29,11 @@
   %td= @user.ua_user_field.address
   %td= @user.ru_user_field.address
 %tr
+  %td= t('fields.en.passport_issued_by')
+  %td= @user.en_user_field.passport_issued_by
+  %td= @user.ua_user_field.passport_issued_by
+  %td= @user.ru_user_field.passport_issued_by
+%tr
   %td= t('fields.en.c_a_number')
   %td= @user.en_user_field.c_a_number
   %td= @user.ua_user_field.c_a_number

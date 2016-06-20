@@ -1,24 +1,13 @@
-%h1 Choose a new password
-= form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@user.errors.count, "error")
-        prohibited this user from being saved:
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :email
-    %br/
-    = @user.email
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  .actions
-    = f.submit
+.panel.panel-default
+  .panel-heading
+    %h4= t('reset_password.change_your_password')
+  .panel-body
+    = form_for @user, url: password_reset_path(@token), html: { method: :put } do |f|
+      = render partial: 'shared/errors', locals: { target: @user }
+      .form-group
+        = f.label :password, t('reset_password.new_password')
+        = f.password_field :password, autofocus: true, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, t('reset_password.confirm_new_password')
+        = f.password_field :password_confirmation, class: 'form-control'
+      = f.submit t('reset_password.change_my_password'), class: 'btn btn-primary'

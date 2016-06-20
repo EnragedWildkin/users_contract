@@ -1,2 +1,5 @@
 %h1.title= t('edit.edit_profile')
-= render 'form'
+- if current_user&.admin? && @edit_admin
+  = render 'admin_form'
+- else
+  = render 'user_form'
