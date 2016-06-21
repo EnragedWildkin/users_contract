@@ -393,19 +393,19 @@
         %p ATTN: Theodore King
       %td.padding_top_11
         %p= "#{street(@user.en_user_field.address)},"
-        %p= "#{city(@user.en_user_field.address)}, #{zip_code(@user.ua_user_field.address)},"
+        %p= "#{city(@user.en_user_field.address)}, #{zip_code(@user.en_user_field.address)},"
         %p= "#{country(@user.en_user_field.address)}"
         %br
         %br
         %br
         %p= "Account ##{@user.en_user_field.c_a_number}"
-        %p= "Bank Name: @user.en_user_field.bank_name"
-        %p= "Bank Address: #{@user.ua_user_field.bank_address}"
+        %p= "Bank Name: #{@user.en_user_field.bank_name}"
+        %p= "Bank Address: #{@user.en_user_field.bank_address}"
         %p= "Bank SWIFT Code: #{@user.swift_code}"
         %p= "IBAN: #{@user.iban_number}" if @user.iban_number.present?
         %br
         %p Intermediary Bank:
-        %p= "Bank Nam: #{@user.intermediary_bank_name}"
+        %p= "Bank Name: #{@user.intermediary_bank_name}"
         %p= "Bank SWIFT Code: #{@user.intermediary_bank_swift_code}"
         %br
   .data
