@@ -35,6 +35,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.skip_email_and_password_validation if admin?
+
     if @user.update(user_params)
       redirect_to root_path, notice: 'User was successfully updated.'
     else
