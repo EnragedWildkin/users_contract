@@ -3,7 +3,9 @@
   "SOR-LLC-draft-Russia",
   "NDA-LLC-draft-Ukraine",
   "NDA-LLC-draft-Russia",
-  "Consulting-Services-draft"
+  "Consulting-Services-draft",
+  "Contract-LLC-draft-Ukraine",
+  "Contract-LLC-draft-Russia"
 ].each { |name| Draft.find_or_create_by({ name: name }) }
 
 ["PE", "Physical person"].each do |name|
