@@ -53,6 +53,16 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'minitest-rails'
+
+  # Stubs & Mocks
+  gem 'mocha'
+  # Reports
+  gem 'simplecov', require: false
+  gem 'minitest-reporters'
+end
+
 # Authentication
 gem 'sorcery'
 # Email format validation
