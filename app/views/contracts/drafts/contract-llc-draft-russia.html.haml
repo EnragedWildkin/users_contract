@@ -29,23 +29,28 @@
           %span.bold Pavlo Nikitochkin
           с одной стороны, и
           %span.bold ИСПОЛНИТЕЛЬ:
-          физическое лицо-предприниматель
+          #{person_type_for_locale(@person_type, :ru)}
           %span.bold= "#{@user.ru_user_field.full_name},"
-          действующий на основании Свидетельства о государственной регистрации субъекта предпринимательской
-          деятельности № #{@user.register_number} и являющийся плательщиком единого налога, заключили
-          настоящий ДОГОВОР о нижеследующем:
+          - if @person_type == "PE"
+            действующий на основании Свидетельства о государственной регистрации субъекта предпринимательской
+            деятельности № #{@user.register_number} и являющийся плательщиком единого налога, заключили
+            настоящий ДОГОВОР о нижеследующем:
+          - else
+            заключили настоящий ДОГОВОР о нижеследующем:
       %td.padding_top_11
         %p
           %span.bold The COMPANY: JetThoughts LLC
           in the person of its Director
           %span.bold Pavlo Nikitochkin
           on one part, and
-          %span.bold The CONTRACTOR:
-          Private entrepreneur
+          %span.bold The CONTRACTOR:          #{person_type_for_locale(@person_type, :en)}
           %span.bold= "#{@user.en_user_field.full_name},"
-          acting on the basis of the Certificate on State registration of a subject of entrepreneurial
-          activity # #{@user.register_number} and is the taxpayer of the single tax on the other part have
-          concluded the AGREEMENT on the following:
+          - if @person_type == "PE"
+            acting on the basis of the Certificate on State registration of a subject of entrepreneurial
+            activity # #{@user.register_number} and is the taxpayer of the single tax on the other part have
+            concluded the AGREEMENT on the following:
+          - else
+            on the other part have concluded the AGREEMENT on the following:
     %tr
       %td
         %p.bold.padding_top_11 1.  ТЕРМИНЫ ДОГОВОРА
@@ -643,7 +648,7 @@
           взаимного согласия, спор решается в судебном порядке в соответствии с определенным действующим
           законодательством Российской Федерации.
       %td
-        %p.bold.padding_top_11 10. FINAL PROVISIONS
+        %p.bold.padding_top_11 10. OTHER PROVISIONS
         %p
           10.1. After signing the AGREEMENT all preliminary talks, correspondence, preliminary contracts and
           protocols of intentions on the issues one or other way related to the AGREEMENT shall be
@@ -748,16 +753,22 @@
         %br
         %p= "Идентификационный номер: #{@user.taxpayer_id}"
         %br
-        %p= "Свидетельство № #{@user.register_number}"
-        %p= "От #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ru)}"
+        - if @person_type == "PE"
+          %p= "Свидетельство № #{@user.register_number}"
+          %p= "От #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ru)}"
+        - else
+          %p= "Паспорт номер: #{@user.passport_number}"
+          %p= "Выдан #{@user.ru_user_field.passport_issued_by}"
         %br
         %p= "т/с № #{@user.ru_user_field.c_a_number}"
         %p= @user.ru_user_field.bank_name
+        %p= "Адрес банка: #{@user.ru_user_field.bank_address}"
         %p= "МФО #{@user.bank_code}"
+        %p= "IBAN #{@user.iban_number}"
         %br
         %br
         %p
-          #{person_type_for_locale(@person_type, :ru)}_____________________/
+          #{person_type_for_locale(@person_type, :ru)}__________________/
           #{@user.ru_user_field.name_with_initials}
         %br
       %td.padding_top_11
@@ -768,15 +779,21 @@
         %br
         %p= "Taxpayer ID: #{@user.taxpayer_id}"
         %br
-        %p= "Register № #{@user.register_number}"
-        %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - if @person_type == "PE"
+          %p= "Register № #{@user.register_number}"
+          %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - else
+          %p= "Passport number: #{@user.passport_number}"
+          %p= "Issued by #{@user.en_user_field.passport_issued_by}"
         %br
         %p= "c/a № #{@user.en_user_field.c_a_number}"
         %p= @user.en_user_field.bank_name
+        %p= "Bank Address: #{@user.en_user_field.bank_address}"
         %p= "Bank Code #{@user.bank_code}"
+        %p= "IBAN #{@user.iban_number}"
         %br
         %br
         %p
-          #{person_type_for_locale(@person_type, :en)}_____________________/
+          #{person_type_for_locale(@person_type, :en)}__________________/
           #{@user.en_user_field.short_name}
         %br

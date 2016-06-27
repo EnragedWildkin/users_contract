@@ -14,8 +14,8 @@
         %p
           Стосовно послуг ІТ Консультанта, #{person_type_for_locale(@person_type, :ua)}
           #{@user.ua_user_field.full_name},
-          на період з #{locale_date(@contract.start_date, "«%d» %B %Y", :ua)}.
-          по #{locale_date(@contract.end_date, "«%d» %B %Y", :ua)}. (обидва дні включно).
+          на період з #{locale_date(@contract.start_date, "«%d» %B %Y", :ua)}р.
+          по #{locale_date(@contract.end_date, "«%d» %B %Y", :ua)}р. (обидва дні включно).
           З можливістю продовження даного договору на підставах вказаних нижче.
       %td.padding_top_bottom_5
         %p
@@ -61,13 +61,13 @@
     %tr
       %td.padding_top_bottom_5
         %p.bold.underline 5. Інші умови:
-        %p 
+        %p
           Надається можливість продовження даного окремого Договору на необхідний період дотримуючись
           аналогічних умов та строків. Дана можливість може застосовуватись не пізніше ніж за 1 тиждень до
           закінчення цього договору.
       %td.padding_top_bottom_5
         %p.bold.underline 5. Other Conditions:
-        %p 
+        %p
           The possibility of the continuation of this particular Contract for the required period following
           similar terms and conditions. This possibility can be used no later than 1 week prior to the
           expiration of this contract.
@@ -114,7 +114,7 @@
         %br
         %br
         %p
-          #{person_type_for_locale(@person_type, :ua)}________________________/
+          #{person_type_for_locale(@person_type, :ua)}__________________/
           #{@user.ua_user_field.name_with_initials}
         %br
       %td.padding_top_11
@@ -140,6 +140,6 @@
         %br
         %br
         %p
-          #{person_type_for_locale(@person_type, :en)}________________________/
+          #{person_type_for_locale(@person_type, :en)}__________________/
           #{@user.en_user_field.short_name}
         %br
