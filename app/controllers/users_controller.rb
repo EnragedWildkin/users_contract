@@ -69,7 +69,6 @@ class UsersController < ApplicationController
       :register_number_start_date,
       :swift_code,
       :iban_number,
-      :bank_code,
       :passport_number,
       :intermediary_bank_name,
       :intermediary_bank_swift_code,
