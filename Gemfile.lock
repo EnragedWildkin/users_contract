@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/jetthoughts/oauth2-me-ruby.git
+  revision: 342e92073ce3d9cf167e513d33a5e07aa2eab5ab
+  specs:
+    oauth2-me (0.1.1)
+
+GIT
   remote: git://github.com/mbleigh/princely.git
   revision: 7526cbefb632b19427b0f9f80428fe1717b18087
   specs:
@@ -79,6 +85,7 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    hashie (3.4.4)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -127,6 +134,17 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
+    omniauth (1.3.1)
+      hashie (>= 1.2, < 4)
+      rack (>= 1.0, < 3)
+    omniauth-google-oauth2 (0.4.0)
+      jwt (~> 1.5.0)
+      multi_json (~> 1.3)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (>= 1.3.1)
+    omniauth-oauth2 (1.4.0)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
     pg (0.18.4)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -232,6 +250,8 @@ DEPENDENCIES
   minitest-rails
   minitest-reporters
   mocha
+  oauth2-me!
+  omniauth-google-oauth2
   pg (~> 0.15)
   princely!
   pry-rails
