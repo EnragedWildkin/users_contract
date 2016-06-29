@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user.skip_email_and_password_validation if admin?
 
     if @user.save
-      login(params[:user][:email], params[:user][:password])
+      login(params[:user][:email], params[:user][:password]) unless admin?
 
       redirect_to root_path, notice: 'User was successfully created.'
     else
