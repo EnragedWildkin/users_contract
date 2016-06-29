@@ -1,4 +1,3 @@
-
 /* Headers and footers for NDA LLC drafts */
 div.nda_llc_contract {
   page: nda_llc_contract;
@@ -19,7 +18,7 @@ div.nda_llc_contract {
     margin-bottom: 60pt;
     font-family: Verdana;
     font-size: 8pt;
-    content: " Copyright 2016 JETTHOUGHTS / Confidential / Unauthorized use and disclosure strictly
+    content: " Copyright 2016 JETTHOUGHTS/Confidential/Unauthorized use and disclosure strictly
     forbidden"
   }
   @bottom-right {
@@ -31,7 +30,6 @@ div.nda_llc_contract {
     content: "Page " counter(page) " of " counter(pages);
   }
 }
-
 /* Styles for all pages */
 @page body {
   border-bottom: thin black solid;
@@ -135,3 +133,36 @@ p {
 .consulting_services .left_padding_50 {
   padding-left: 50px;
 }
+
+/* Headers and footers for Contract-LLC drafts */
+div.contract-llc-draft {
+  page: contract-llc-draft;
+  page-break-before: right;
+  prince-page-group: start;
+}
+@page contract-llc-draft {
+  @top {
+    margin-bottom: 11pt;
+    font-family: 'Times New Roman';
+    font-size: 11pt;
+    content: flow(header);
+    vertical-align: bottom;
+  }
+  @bottom-left {
+    border-bottom: solid black thin;
+    margin-top: 20pt;
+    margin-bottom: 60pt;
+    font-family: Verdana;
+    font-size: 8pt;
+    content: "Confidential/Unauthorized use and disclosure strictly forbidden"
+  }
+  @bottom-right {
+    border-bottom: solid black thin;
+    margin-top: 20pt;
+    margin-bottom: 60pt;
+    font-family: Verdana;
+    font-size: 8pt;
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+.contract-llc-draft p.header { flow: static(header); }
