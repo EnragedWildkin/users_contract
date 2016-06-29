@@ -1,0 +1,31 @@
+admin:
+  email: admin@email.com
+  crypted_password: "$2a$10$lgGxRJ.3imD6MGcbbPgWKeIKXjF6YrZoXPbhTAPPCXSe3JBrWASx."
+  salt: "28jp98kMhTra5zXxX9eD"
+  role: 1
+john:
+  email: john@email.com
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) %>
+  taxpayer_id: 99999999
+  register_number: 9999999
+  register_number_start_date: 2001-01-01
+  swift_code: MMMMMM
+  iban_number: 9999999
+  bank_code: 325321
+  passport_number: 000
+  intermediary_bank_name: JP MORGAN CHASE BANK
+  intermediary_bank_swift_code: MMMMMM
+sam:
+  email: sam@email.com
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) %>
+  taxpayer_id: 111111
+  register_number: 1111111
+  register_number_start_date: 2001-01-02
+  swift_code: MMMMMM
+  iban_number: 1111111
+  bank_code: 1111111
+  passport_number: 000
+  intermediary_bank_name: JP MORGAN CHASE BANK
+  intermediary_bank_swift_code: MMMMMM
