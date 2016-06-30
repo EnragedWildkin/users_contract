@@ -29,11 +29,14 @@
           %span.bold Pavlo Nikitochkin
           з одного боку, та
           %span.bold ВИКОНАВЕЦЬ:
-          Фізична особа-підприємець
+          #{person_type_for_locale(@person_type, :ua)}
           %span.bold= "#{@user.ua_user_field.full_name},"
-          який діє на підставі Свідоцтва про державну реєстрацію суб’єкта підприємницької діяльності
-          No #{@user.register_number} та є платником єдиного податку, з іншого боку, уклали цей ДОГОВІР про
-          наступне:
+          - if @person_type == "PE"
+            який діє на підставі Свідоцтва про державну реєстрацію суб’єкта підприємницької діяльності
+            No #{@user.register_number} та є платником єдиного податку, з іншого боку, уклали цей ДОГОВІР про
+            наступне:
+          - else
+            з іншого боку, уклали цей ДОГОВІР про наступне:
       %td.padding_top_11
         %p
           %span.bold The COMPANY: JetThoughts LLC
@@ -41,11 +44,14 @@
           %span.bold Pavlo Nikitochkin
           on one part, and
           %span.bold The CONTRACTOR:
-          Private entrepreneur
+          #{person_type_for_locale(@person_type, :en)}
           %span.bold= "#{@user.en_user_field.full_name},"
-          acting on the basis of the Certificate on State registration of a subject of entrepreneurial
-          activity # #{@user.register_number} and is the taxpayer of the single tax on the other part have
-          concluded the AGREEMENT on the following:
+          - if @person_type == "PE"
+            acting on the basis of the Certificate on State registration of a subject of entrepreneurial
+            activity # #{@user.register_number} and is the taxpayer of the single tax on the other part have
+            concluded the AGREEMENT on the following:
+          - else
+            on the other part have concluded the AGREEMENT on the following:
     %tr
       %td
         %p.bold.padding_top_11 1. ТЕРМІНИ ДОГОВОРУ
@@ -625,7 +631,7 @@
           взаємної згоди, спір вирішується в судовому порядку згідно із визначеною чинним законодавством
           України.
       %td
-        %p.bold.padding_top_11 10. FINAL PROVISIONS
+        %p.bold.padding_top_11 10. OTHER PROVISIONS
         %p
           10.1. After signing the AGREEMENT all preliminary talks, correspondence, preliminary contracts and
           protocols of intentions on the issues one or other way related to the AGREEMENT shall be
@@ -735,8 +741,12 @@
         %br
         %p= "Ідентифікаційний номер: #{@user.taxpayer_id}"
         %br
-        %p= "Свідоцтво № #{@user.register_number}"
-        %p= "Від #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ua)}"
+        - if @person_type == "PE"
+          %p= "Свідоцтво № #{@user.register_number}"
+          %p= "Від #{locale_date(@user.register_number_start_date, "«%d» %B %Y", :ua)}"
+        - else
+          %p= "Паспорт номер: #{@user.passport_number}"
+          %p= "Виданий #{@user.ua_user_field.passport_issued_by}"
         %br
         %p= "п/р № #{@user.ua_user_field.c_a_number}"
         %p= @user.ua_user_field.bank_name
@@ -746,7 +756,7 @@
         %br
         %br
         %p
-          #{person_type_for_locale(@person_type, :ua)}_____________________/
+          #{person_type_for_locale(@person_type, :ua)}__________________/
           #{@user.ua_user_field.name_with_initials}
         %br
       %td.padding_top_11
@@ -757,8 +767,12 @@
         %br
         %p= "Taxpayer ID: #{@user.taxpayer_id}"
         %br
-        %p= "Register № #{@user.register_number}"
-        %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - if @person_type == "PE"
+          %p= "Register № #{@user.register_number}"
+          %p= "As of #{locale_date(@user.register_number_start_date, "%B %d, %Y", :en)}"
+        - else
+          %p= "Passport number: #{@user.passport_number}"
+          %p= "Issued by #{@user.en_user_field.passport_issued_by}"
         %br
         %p= "c/a № #{@user.en_user_field.c_a_number}"
         %p= @user.en_user_field.bank_name
@@ -768,6 +782,6 @@
         %br
         %br
         %p
-          #{person_type_for_locale(@person_type, :en)}_____________________/
+          #{person_type_for_locale(@person_type, :en)}__________________/
           #{@user.en_user_field.short_name}
         %br
