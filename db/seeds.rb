@@ -26,7 +26,6 @@ user1 = User.find_or_create_by(email: "user1@email.com") do |user|
   user.register_number_start_date = "2001-01-01"
   user.swift_code = "MMMMMM"
   user.iban_number = "9999999"
-  user.bank_code = "325321"
   user.passport_number = "000"
   user.intermediary_bank_name = "JP MORGAN CHASE BANK"
   user.intermediary_bank_swift_code = "MMMMMM"
@@ -82,7 +81,6 @@ user2 = User.find_or_create_by(email: "user2@email.com") do |user|
   user.register_number_start_date = "2001-01-01"
   user.swift_code = "MMMMMM"
   user.iban_number = "9999999"
-  user.bank_code = "325321"
   user.passport_number = "000"
 end
 
