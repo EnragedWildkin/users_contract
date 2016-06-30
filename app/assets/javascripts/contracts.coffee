@@ -16,14 +16,17 @@ initVariables = ->
     'NDA-LLC-draft-Ukraine',
     'NDA-LLC-draft-Russia'
   ]
+  @.today = new Date().toISOString().substring(0, 10)
 
 # Don't show end_date field on NDA drafts
 hideEndDate = ->
   if $.inArray($('#contract_draft_id').find('option:selected').text(),
     contracts_without_end_date_field) >= 0
     $('.contract-end-date').hide('slow')
+    $('#contract_end_date').val('')
   else
     $('.contract-end-date').show('slow')
+    $('#contract_end_date').val(today)
 
 # Show Consulting-Services-draft fields when generate it
 showConsultingFields = ->
