@@ -10,6 +10,10 @@ development:
   <<: *default
   database: users_contract_development
 
+staging:
+  <<: *default
+  database: users_contract_development
+
 test:
   <<: *default
   database: users_contract_test

@@ -28,6 +28,18 @@ class User < ActiveRecord::Base
   enum role: [:registered, :admin]
   has_many :contracts
 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.build_en_user_field(first_name: auth.info.first_name, last_name: auth.info.last_name)
+      user.build_ua_user_field
+      user.build_ru_user_field
+      user.skip_email_and_password_validation
+      user.save!
+    end
+  end
+
   def admin?
     role == 'admin'
   end
