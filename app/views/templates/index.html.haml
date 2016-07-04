@@ -1,0 +1,14 @@
+%h1 Listing templates
+.col-md-8.col-md-offset-2
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Name
+        %th
+      - @templates.each do |template|
+        %tr
+          %td= link_to "#{template.name}", template_path(template)
+          %td
+            .pull-right
+              = link_to t('template.edit'), edit_template_path(template), class: 'btn btn-default'
+              = link_to t('template.delete'), template_path(template), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

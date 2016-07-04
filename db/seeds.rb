@@ -12,6 +12,15 @@
   PersonType.find_or_create_by({ name: name })
 end
 
+# Create basic templates
+Contracts::SorLlcDraftUkraineService.new.generate
+Contracts::SorLlcDraftRussiaService.new.generate
+Contracts::NdaLlcDraftUkraineService.new.generate
+Contracts::NdaLlcDraftRussiaService.new.generate
+Contracts::ContractLlcDraftUkraineService.new.generate
+Contracts::ContractLlcDraftRussiaService.new.generate
+Contracts::ConsultingServicesDraftService.new.generate
+
 admin = User.find_or_create_by(email: "admin@email.com") do |user|
   user.password = "12345admin"
   user.password_confirmation = "12345admin"

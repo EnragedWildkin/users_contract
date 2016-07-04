@@ -1,6 +1,8 @@
 class ContractsController < ApplicationController
   before_action :set_drafts, only: [:new, :generate]
   before_action :set_persons_type, only: [:new, :generate]
+  before_action :set_request_format, only: [:generate]
+
   def new
     @contract = Contract.new
     @contract.build_en_contract_field
@@ -10,26 +12,13 @@ class ContractsController < ApplicationController
   def generate
     @user = User.find(params[:user_id])
     @contract = @user.contracts.build(contract_params)
-    @person_type = @contract.person_type.name
-    draft_name = @contract.draft.name.downcase
-    request.format = :pdf if params[:commit].downcase == 'pdf'
 
     if @contract.valid?
+      @draft_name = @contract.draft.name.downcase
+      @contract_template = ContractGenerateService.new(@user, @contract).generate
       respond_to do |format|
-        format.html {
-          render layout: 'pdf_only',
-          template: "contracts/drafts/#{draft_name}"
-        }
-        format.pdf {
-          render template: "contracts/drafts/#{draft_name}",
-          layout: 'pdf_only',
-          pdf: "#{draft_name}_#{@user.en_user_field.short_name}",
-          stylesheets: [
-            'app/assets/javascripts/application.js',
-            'app/assets/fonts/times_new_roman.css',
-            'app/assets/stylesheets/prince.css'
-          ]
-        }
+        format.html { render contracts_html }
+        format.pdf  { render contracts_pdf }
       end
     else
       render :new
@@ -64,5 +53,25 @@ class ContractsController < ApplicationController
 
   def set_drafts
     @drafts = Draft.pluck(:name, :id)
+  end
+
+  def set_request_format
+    request.format = :pdf if params[:commit].downcase == 'pdf'
+  end
+
+  def contracts_html
+    { layout: 'pdf_only' }
+  end
+
+  def contracts_pdf
+    {
+      layout: 'pdf_only',
+      pdf: "#{@draft_name}_#{@user.en_user_field.short_name}",
+      stylesheets: [
+        'app/assets/javascripts/application.js',
+        'app/assets/fonts/times_new_roman.css',
+        'app/assets/stylesheets/prince.css'
+      ]
+    }
   end
 end

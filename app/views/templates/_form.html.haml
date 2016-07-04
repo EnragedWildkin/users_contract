@@ -1,0 +1,14 @@
+.panel-body
+  = form_for @template do |f|
+    = render partial: 'shared/errors', locals: { target: @template }
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :body
+      = f.text_area :body, class: 'form-control', style: 'height: 600px;'
+    .row
+      .col-md-6
+        = link_to t('back'), templates_path, class: 'btn btn-primary btn-lg'
+      .col-md-6
+        = f.submit t('save'), class: 'pull-right btn btn-primary btn-lg'

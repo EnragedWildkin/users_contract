@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :templates
   root 'routes#root'
 
   resources :user_sessions, only: [:new, :create, :destroy]

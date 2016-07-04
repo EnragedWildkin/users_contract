@@ -24,6 +24,6 @@ module ContractsHelper
   end
 
   def person_type_for_locale(type, language)
-    t("fields.#{language}.#{type.downcase.split(' ').join('_')}")
+    I18n.t("fields.#{language}.#{type.downcase.split(' ').join('_')}")
   end
 end

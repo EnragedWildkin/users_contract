@@ -4,11 +4,28 @@
       .navbar-form.navbar-right
         .btn-group
           - if current_user
-            = link_to(t('users_list'), users_path, class: 'btn btn-success') if current_user.admin?
-            = link_to(t('add_user'), new_user_path, class: 'btn btn-success') if current_user.admin?
-            = link_to(t('edit_profile'), edit_user_path(current_user.id), class: 'btn btn-primary') unless edit_page?
-            = link_to(t('log_out'), :log_out, method: :post, class: 'btn btn-primary')
+            - if current_user.admin?
+              .btn-group
+                %button.btn.btn-success.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+                  = t('header.users')
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{ href: users_path }= t('header.users_list')
+                  %li
+                    %a{ href: new_user_path }= t('header.new_user')
+              .btn-group
+                %button.btn.btn-success.dropdown-toggle{'data-toggle' => 'dropdown', type: 'button'}
+                  = t('header.templates')
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{ href: templates_path }= t('header.templates_list')
+                  %li
+                    %a{ href: new_template_path }= t('header.new_template')
+            = link_to(t('header.edit_profile'), edit_user_path(current_user.id), class: 'btn btn-primary') unless edit_page?
+            = link_to(t('header.log_out'), :log_out, method: :post, class: 'btn btn-primary')
           - else
-            = link_to(t('google'), :sign_up_with_google, class: 'btn btn-danger')
-            = link_to(t('sign_up'), :sign_up, class: 'btn btn-primary') unless sign_up_page?
-            = link_to(t('log_in'), :log_in, class: 'btn btn-primary')
+            = link_to(t('header.google'), :sign_up_with_google, class: 'btn btn-danger')
+            = link_to(t('header.sign_up'), :sign_up, class: 'btn btn-primary') unless sign_up_page?
+            = link_to(t('header.log_in'), :log_in, class: 'btn btn-primary')
