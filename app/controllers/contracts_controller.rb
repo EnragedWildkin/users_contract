@@ -8,8 +8,8 @@ class ContractsController < ApplicationController
   end
 
   def generate
-    @contract = Contract.new(contract_params)
     @user = User.find(params[:user_id])
+    @contract = @user.contracts.build(contract_params)
     @person_type = @contract.person_type.name
     draft_name = @contract.draft.name.downcase
     request.format = :pdf if params[:commit].downcase == 'pdf'
