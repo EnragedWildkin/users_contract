@@ -6,11 +6,17 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    if login(params[:email], params[:password])
+    if request.env['omniauth.auth'].present?
+      @user = User.from_omniauth(request.env['omniauth.auth'])
+      session[:user_id] = @user.id
       redirect_back_or_to(root_path, notice: 'Login successful')
     else
-      flash.now[:alert] = 'Login failed'
-      render action: 'new'
+      if login(params[:email], params[:password])
+        redirect_back_or_to(root_path, notice: 'Login successful')
+      else
+        flash.now[:alert] = 'Login failed'
+        render action: 'new'
+      end
     end
   end
 

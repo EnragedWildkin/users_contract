@@ -69,3 +69,6 @@ gem 'sorcery'
 gem 'validates_email_format_of'
 # PDF generation
 gem 'princely', github: 'mbleigh/princely'
+
+gem 'omniauth-google-oauth2'
+gem 'oauth2-me', github: 'jetthoughts/oauth2-me-ruby'

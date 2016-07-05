@@ -5,6 +5,7 @@ en:
   log_in: "Log In"
   log_out: "Logout"
   sign_up: "Sign Up"
+  google: "Google+"
   save: "Save"
   edit_profile: "Edit Profile"
   cancel: "Cancel"
